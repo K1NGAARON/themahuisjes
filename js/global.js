@@ -1,10 +1,14 @@
 $(document).scroll(function () {
     const header = $('.header');
 
-    if ($(this).scrollTop() > header.height()) {
-        header.addClass('active');
+    if (!header) {
+        return;
     } else {
-        header.removeClass('active');
+        if ($(this).scrollTop() > header.height()) {
+            header.addClass('active');
+        } else {
+            header.removeClass('active');
+        }
     }
 });
 
