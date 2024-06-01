@@ -12,7 +12,7 @@ $(window).scroll(function() {
         if (distanceFromTop >= 0 && distanceFromTop <= viewportHeight) {
             opacity = Math.min(1, (index + 1) / numSections * 0.85 + 0.15); // Increase opacity from 0.15 to 1
         } else {
-            opacity = 0.5; // Default opacity when not in view
+            opacity = 0;
         }
 
         $(this).css('background', `rgba(0, 0, 0, ${opacity})`);

@@ -3,7 +3,6 @@ html {
     margin: 0;
     padding: 0;
     height: 100%;
-    /* overflow-x: hidden; */
     background: url('/huisjes/vis-a-vis/img/banner.jpg') no-repeat center center fixed;
     background-size: cover;
 }
@@ -23,6 +22,11 @@ html {
 .container {
     position: relative;
     height: 100%;
+}
+
+.container.first-container .item.bg {
+    padding-left: 30px;
+    background: rgba(0, 0, 0, 0.25);
 }
 
 .container .content {
@@ -80,6 +84,36 @@ html {
 .container .navbar a:hover {
     opacity: 1;
     transition: var(--transition);
+}
+
+.container .content .info-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    width: 60%;
+}
+
+.container .content .info-wrapper .item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.container .content .info-wrapper .item .item-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.container .content .info-wrapper .item i {
+    font-size: 70px;
+}
+
+.container .content .info-wrapper .item .true {
+    color: var(--green);
+}
+
+.container .content .info-wrapper .item .false {
+    color: var(--red);
 }
 
 .container .content.pd-0 {

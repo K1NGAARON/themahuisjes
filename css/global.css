@@ -5,6 +5,10 @@
     --white: #fff;
     --light-grey: #ECECEC;
     --black: #1C1C1C;
+
+    --green: #04C304;
+    --red: #FF0000;
+
     --boxShadow: 0px 3px 6px #00000029;
     --borderRadius: 26px;
     --overlay: var(--black);
