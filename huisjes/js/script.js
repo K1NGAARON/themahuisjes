@@ -1,19 +1,20 @@
 $(window).scroll(function() {
-    console.log("loaded");
-
     var scrollTop = $(document).scrollTop();
     var viewportHeight = $(window).height();
     var sections = $('.content');
+    var numSections = sections.length;
 
-    sections.each(function() {
+    sections.each(function(index) {
         var sectionOffsetTop = $(this).offset().top;
         var distanceFromTop = scrollTop - sectionOffsetTop + viewportHeight / 2;
+        var opacity;
 
         if (distanceFromTop >= 0 && distanceFromTop <= viewportHeight) {
-            var opacity = Math.max(0.5, 1 - (Math.abs(distanceFromTop - viewportHeight / 2) / (viewportHeight / 2)));
-            $(this).css('background', `rgba(0, 0, 0, ${opacity})`);
+            opacity = Math.min(1, (index + 1) / numSections * 0.85 + 0.15); // Increase opacity from 0.15 to 1
         } else {
-            $(this).css('background', 'rgba(0, 0, 0, 0.5)');
+            opacity = 0.5; // Default opacity when not in view
         }
+
+        $(this).css('background', `rgba(0, 0, 0, ${opacity})`);
     });
 });

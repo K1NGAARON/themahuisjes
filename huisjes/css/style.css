@@ -3,7 +3,7 @@ html {
     margin: 0;
     padding: 0;
     height: 100%;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
     background: url('/huisjes/vis-a-vis/img/banner.jpg') no-repeat center center fixed;
     background-size: cover;
 }
@@ -80,19 +80,6 @@ html {
 .container .navbar a:hover {
     opacity: 1;
     transition: var(--transition);
-}
-
-/* CHANGE WITH JS INSTEAD OF CSS */
-.container .content.opacity-1 {
-    background: rgba(0, 0, 0, 0.25);
-}
-
-.container .content.opacity-2 {
-    background: rgba(0, 0, 0, 0.50);
-}
-
-.container .content.opacity-3 {
-    background: rgba(0, 0, 0, 0.75);
 }
 
 .container .content.pd-0 {
