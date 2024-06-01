@@ -1,6 +1,7 @@
 .banner {
     justify-content: center;
-    background-image: url('/home/img/banner.jpg');
+    background-image: none;
+    background: var(--black);
     background-repeat: no-repeat;
     background-position: top center;
     background-size: cover;
@@ -14,10 +15,21 @@
 
 .banner.section,
 .banner.section .row {
-    min-height: 80vh;
+    min-height: 100vh;
+}
+
+.banner.section .row {
+    max-width: 1600px;
+    padding: 0 30px;
 }
 
 .banner.contact .legal .legal-item a, 
 .banner.contact .legal .legal-item p {
     color: var(--white);
+}
+
+.form-wrapper .checkbox {
+    height: fit-content;
+    flex: 0;
+    margin-left: 16px;
 }

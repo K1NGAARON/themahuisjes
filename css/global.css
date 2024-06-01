@@ -237,6 +237,18 @@ img {
     margin: 0;
 }
 
+.form-wrapper .form-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-wrapper .form-row label {
+    color: var(--black);
+    font-size: 18px;
+}
+
 .form-wrapper input {
     color: var(--black);
     flex: 1;
