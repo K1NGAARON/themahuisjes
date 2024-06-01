@@ -8,6 +8,18 @@ html {
     background-size: cover;
 }
 
+.container .content .item h1 {
+    font-size: 120px;
+}
+
+.container .content .item h2 {
+    font-size: 110px;
+}
+
+.container .content .item p {
+    font-size: 30px;
+}
+
 .container {
     position: relative;
     height: 100%;
@@ -22,6 +34,7 @@ html {
     align-items: center;
     text-align: center;
     color: var(--white);
+    padding: 30px;
     background: rgba(0, 0, 0, 0.25);
     transition: background 0.5s;
 }
@@ -31,6 +44,16 @@ html {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    justify-content: center;
+    height: 100%;
+}
+
+.container .content .item.justify-end {
+    justify-content: flex-end;
+}
+
+.container .content .item.align-end {
+    align-items: flex-end;
 }
 
 .container .navbar {
@@ -39,7 +62,7 @@ html {
     gap: 5px;
     justify-content: flex-start;
     align-items: flex-start;
-    margin-top: 40px;
+    margin-top: 20px;
 }
 
 .container .navbar a {
@@ -53,4 +76,17 @@ html {
 .container .navbar a:hover {
     opacity: 1;
     transition: var(--transition);
+}
+
+/* CHANGE WITH JS INSTEAD OF CSS */
+.container .content.opacity-1 {
+    background: rgba(0, 0, 0, 0.25);
+}
+
+.container .content.opacity-2 {
+    background: rgba(0, 0, 0, 0.50);
+}
+
+.container .content.opacity-3 {
+    background: rgba(0, 0, 0, 0.75);
 }

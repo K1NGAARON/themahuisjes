@@ -1,5 +1,3 @@
-console.log("pre");
-
 $(window).scroll(function() {
     console.log("loaded");
 
