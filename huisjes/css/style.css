@@ -127,6 +127,7 @@ html {
     display: flex;
     gap: 0;
     flex-direction: row;
+    width: 100%;
 }
 
 .container .content .gallery-wrapper .item {
