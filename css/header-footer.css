@@ -113,6 +113,7 @@
 }
 
 .footer {
+    position: relative;
     min-height: unset;
     color: var(--white);
     background-color: var(--primary);
