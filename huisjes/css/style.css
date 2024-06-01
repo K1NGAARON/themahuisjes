@@ -34,7 +34,7 @@ html {
     align-items: center;
     text-align: center;
     color: var(--white);
-    padding: 30px;
+    padding: 0 30px;
     background: rgba(0, 0, 0, 0.25);
     transition: background 0.5s;
 }
@@ -54,6 +54,10 @@ html {
 
 .container .content .item.align-end {
     align-items: flex-end;
+}
+
+.container .content .item.align-center {
+    align-items: center;
 }
 
 .container .navbar {
@@ -89,4 +93,22 @@ html {
 
 .container .content.opacity-3 {
     background: rgba(0, 0, 0, 0.75);
+}
+
+.container .content.pd-0 {
+    padding: 0;
+}
+
+.container .content.height-fit-content {
+    height: fit-content;
+}
+
+.container .content .gallery-wrapper {
+    display: flex;
+    gap: 0;
+    flex-direction: row;
+}
+
+.container .content .gallery-wrapper .item {
+    flex: 1 0;
 }
