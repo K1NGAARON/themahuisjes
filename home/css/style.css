@@ -92,9 +92,9 @@ body {
     background-color: var(--vis-a-vis);
 }
 
-/* EAU LALA */
-.projects-wrapper .item.eau-lala .overlay {
-    background-color: var(--eau-lala);
+/* MAISON D'O */
+.projects-wrapper .item.maison-d-o .overlay {
+    background-color: var(--maison-d-o);
 }
 
 /* RIBBEDEPIE */
