@@ -43,8 +43,8 @@ $(window).scroll(function() {
                 return;
             }
             buildSlides(images);
-            buildDots(images.length);
             slideCount = images.length;
+            buildDots(getMaxIndex() + 1);
             carousel.hidden = false;
             updateCarousel();
             bindControls();
@@ -138,14 +138,32 @@ $(window).scroll(function() {
         });
     }
 
+    function getVisibleCount() {
+        const value = getComputedStyle(carousel).getPropertyValue('--gallery-visible');
+        const parsed = parseInt(value, 10);
+        return parsed > 0 ? parsed : 1;
+    }
+
+    function getMaxIndex() {
+        return Math.max(0, slideCount - getVisibleCount());
+    }
+
     function goTo(index) {
         if (!slideCount) return;
-        currentIndex = (index + slideCount) % slideCount;
+        const maxIndex = getMaxIndex();
+        if (index < 0) {
+            currentIndex = maxIndex;
+        } else if (index > maxIndex) {
+            currentIndex = 0;
+        } else {
+            currentIndex = index;
+        }
         updateCarousel();
     }
 
     function updateCarousel() {
-        track.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
+        const visible = getVisibleCount();
+        track.style.transform = 'translateX(-' + (currentIndex * (100 / visible)) + '%)';
 
         const dots = dotsContainer.querySelectorAll('.gallery-carousel__dot');
         dots.forEach(function(dot, index) {
@@ -154,9 +172,17 @@ $(window).scroll(function() {
             dot.setAttribute('aria-selected', isActive ? 'true' : 'false');
         });
 
-        const hideNav = slideCount <= 1;
+        const hideNav = slideCount <= visible;
         prevBtn.hidden = hideNav;
         nextBtn.hidden = hideNav;
         dotsContainer.hidden = hideNav;
     }
+
+    window.addEventListener('resize', function() {
+        if (currentIndex > getMaxIndex()) {
+            currentIndex = getMaxIndex();
+        }
+        buildDots(getMaxIndex() + 1);
+        updateCarousel();
+    });
 })();

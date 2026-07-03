@@ -158,6 +158,7 @@ html {
     position: relative;
     width: 100%;
     max-width: 100%;
+    --gallery-visible: 3;
 }
 
 .gallery-carousel[hidden] {
@@ -167,8 +168,8 @@ html {
 .gallery-carousel__viewport {
     overflow: hidden;
     width: 100%;
-    aspect-ratio: 16 / 10;
-    max-height: 85vh;
+    height: 60vh;
+    max-height: 700px;
     background: rgba(0, 0, 0, 0.4);
 }
 
@@ -179,8 +180,10 @@ html {
 }
 
 .gallery-carousel__slide {
-    flex: 0 0 100%;
+    flex: 0 0 calc(100% / var(--gallery-visible));
     height: 100%;
+    padding: 0 12px;
+    box-sizing: border-box;
 }
 
 .gallery-carousel__slide img {
@@ -188,6 +191,18 @@ html {
     height: 100%;
     object-fit: cover;
     display: block;
+}
+
+@media (max-width: 1024px) {
+    .gallery-carousel {
+        --gallery-visible: 2;
+    }
+}
+
+@media (max-width: 640px) {
+    .gallery-carousel {
+        --gallery-visible: 1;
+    }
 }
 
 .gallery-carousel__btn {
