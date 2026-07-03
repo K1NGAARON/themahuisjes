@@ -23,9 +23,19 @@
     padding: 0 30px;
 }
 
-.banner.contact .legal .legal-item a, 
-.banner.contact .legal .legal-item p {
+.banner.contact .legal {
     color: var(--white);
+    font-size: 24px;
+    margin-top: 20px;
+}
+
+.banner.contact .contact-note {
+    color: var(--white);
+    font-size: 20px;
+    line-height: 1.5;
+    max-width: 480px;
+    margin: 20px 0 0;
+    text-align: justify;
 }
 
 .form-wrapper .checkbox {
