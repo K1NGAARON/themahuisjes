@@ -102,6 +102,60 @@ body {
     background-color: var(--ribbedepie);
 }
 
+/* COMING SOON */
+.projects-wrapper .item.coming-soon {
+    cursor: default;
+}
+
+.projects-wrapper .item.coming-soon img {
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+}
+
+.projects-wrapper .item.coming-soon .coming-soon-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.45);
+    pointer-events: none;
+}
+
+.projects-wrapper .item.coming-soon .coming-soon-content {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.projects-wrapper .item.coming-soon .coming-soon-content h3 {
+    color: var(--white);
+    font-size: 24px;
+    text-align: center;
+}
+
+.projects-wrapper .item.coming-soon .coming-soon-content .city {
+    color: var(--white);
+}
+
+.projects-wrapper .item.coming-soon .badge {
+    color: var(--white);
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 8px 18px;
+    border: 1px solid var(--white);
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.35);
+}
+
 @media (max-width: 560px) {
     .projects-wrapper .item .content h3 {
         font-size: 16px;
@@ -113,5 +167,9 @@ body {
 
     .projects-wrapper .item {
         flex: 1 0 100%;
+    }
+
+    .projects-wrapper .item.coming-soon .coming-soon-content h3 {
+        font-size: 16px;
     }
 }

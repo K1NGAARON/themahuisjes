@@ -38,6 +38,7 @@
   "common": {
     "siteName": "Themahuisjes",
     "moreInfo": "Meer info",
+    "comingSoon": "Coming soon",
     "websiteBy": "Website by",
     "languages": {
       "nl": "Nederlands",
@@ -99,10 +100,10 @@
     },
     "rules": {
       "generalTitle": "Algemene informatie",
-      "generalText": "De accommodaties zijn allen klein van schaal: navigeren door het verblijf gaat het vlotst met handbagage. Wij vragen binnen de verblijven het dragen van pantoffels of barrevoets, de verblijven zijn steeds mooi afgewerkt. Bed en badlinnen zijn aanwezig.",
+      "generalText": "De accommodaties zijn allen klein van schaal: navigeren door het verblijf gaat het vlotst met handbagage. Wij vragen binnen de verblijven het dragen van pantoffels of barrevoets, de verblijven zijn steeds mooi afgewerkt. Bed en badlinnen zijn aanwezig. Het verblijf wordt niet per dag verhuurd en is geen hotelaccommodatie. Wij verhuren voor weekends, midweek, short stay of ook voor langere perioden.",
       "agreementsTitle": "Afspraken",
       "items": [
-        "Geen feestjes of party's.",
+        "Geen feestjes of party's; de locatie wordt evenmin verhuurd als rendez-vous-locatie.",
         "Verboden te roken",
         "Afval na verblijf te verwijderen volgens afspraak",
         "Alles is netjes en mooi gedecoreerd, het geheel is wat uitzicht betreft zeer kindvriendelijk, doch de afwerking is van die aard, dat we liever alleen 'brave' kinderen zien komen. De verantwoordelijkheid voor schade en ongevallen valt ten laste van de huurder.",

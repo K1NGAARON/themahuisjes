@@ -71,6 +71,26 @@ export const huisjes: HuisjeFacts[] = [
   },
 ];
 
+export interface ComingSoonHuisje {
+  slug: string;
+  name: string;
+  city?: string;
+  frontImage: string;
+}
+
+export const comingSoonHuisjes: ComingSoonHuisje[] = [
+  {
+    slug: "kabinet-walschap",
+    name: "Kabinet Walschap",
+    frontImage: "/huisjes/kabinet-walschap/img/front.jpg",
+  },
+  {
+    slug: "tete-a-tete",
+    name: "Tête-à-tête",
+    frontImage: "/huisjes/tete-a-tete/img/front.jpeg",
+  },
+];
+
 export function getHuisje(slug: string): HuisjeFacts | undefined {
   return huisjes.find((huisje) => huisje.slug === slug);
 }

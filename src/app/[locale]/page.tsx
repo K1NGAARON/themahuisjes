@@ -2,7 +2,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
 import Footer from "@/components/Footer";
-import { huisjes } from "@/data/huisjes";
+import { comingSoonHuisjes, huisjes } from "@/data/huisjes";
 import "@/styles/home.css";
 
 export default async function HomePage({
@@ -37,6 +37,17 @@ export default async function HomePage({
                 <Link href={`/huisjes/${huisje.slug}`}>{tc("moreInfo")}</Link>
               </div>
               <div className="overlay" />
+            </div>
+          ))}
+          {comingSoonHuisjes.map((huisje) => (
+            <div key={huisje.slug} className="item coming-soon">
+              <img src={huisje.frontImage} alt={huisje.name} />
+              <div className="coming-soon-content">
+                {huisje.city ? <p className="city">{huisje.city}</p> : null}
+                <h3>{huisje.name}</h3>
+                <span className="badge">{tc("comingSoon")}</span>
+              </div>
+              <div className="coming-soon-overlay" />
             </div>
           ))}
           <div className="item large" />

@@ -1,44 +1,45 @@
 {
   "meta": {
     "home": {
-      "title": "Welkom | Themahuisjes",
-      "description": "Ontdek unieke thematische vakantieverblijven in Nieuwpoort en Hasselt."
+      "title": "Willkommen | Themahuisjes",
+      "description": "Entdecken Sie einzigartige thematische Ferienunterkünfte in Nieuwpoort und Hasselt."
     },
     "contact": {
-      "title": "Neem Contact Op | Themahuisjes",
-      "description": "Neem contact op met Themahuisjes voor een verblijfsaanvraag."
+      "title": "Kontakt | Themahuisjes",
+      "description": "Kontaktieren Sie Themahuisjes für eine Unterkunftsanfrage."
     },
     "contactThankYou": {
-      "title": "We hebben jouw vraag goed ontvangen! | Themahuisjes",
-      "description": "Bedankt om contact op te nemen met Themahuisjes."
+      "title": "Wir haben Ihre Anfrage erhalten! | Themahuisjes",
+      "description": "Vielen Dank, dass Sie Themahuisjes kontaktiert haben."
     },
     "notFound": {
-      "title": "Pagina Niet Gevonden | Themahuisjes",
-      "description": "De pagina werd niet gevonden. Bezoek onze startpagina."
+      "title": "Seite nicht gefunden | Themahuisjes",
+      "description": "Die Seite wurde nicht gefunden. Besuchen Sie unsere Startseite."
     },
     "huisjes": {
       "retteketet": {
         "title": "Retteketet | Themahuisjes",
-        "description": "Retteketet in Nieuwpoort (84 m²): een thematisch vissershuisje in het ankerstraatje met zicht op het Belfort en een aangenaam stadstuintje."
+        "description": "Retteketet in Nieuwpoort (84 m²): ein thematisches Fischerhäuschen in der Ankerstraatje mit Blick auf den Belfried und einem angenehmen Stadthof."
       },
       "vis-a-vis": {
         "title": "Vis à Vis | Themahuisjes",
-        "description": "Vis à Vis in Nieuwpoort (78,5 m²): een voormalige stadsboerderij uit 1922, omgevormd tot een thematische woonst in notenhout."
+        "description": "Vis à Vis in Nieuwpoort (78,5 m²): ein ehemaliger Stadtbauernhof aus dem Jahr 1922, umgebaut zu einer thematischen Wohnung in Nussbaum."
       },
       "maison-d-o": {
         "title": "Maison d'O | Themahuisjes",
-        "description": "Een onbewoonbaar verklaard huis in Nieuwpoort (134 m²), getransformeerd tot een submarien thematisch interieur rond water en licht."
+        "description": "Ein als unbewohnbar erklärtes Haus in Nieuwpoort (134 m²), verwandelt in ein unterseeisch thematisches Interieur rund um Wasser und Licht."
       },
       "ribbedepie": {
         "title": "Ribbedepi | Themahuisjes",
-        "description": "Ribbedepi in Hasselt (87 m²): een thematische woning in de Eeuwfeestwijk met keukenkiosk en schrijnwerk van Mathijs Huyghebaert en Frits Jeuris."
+        "description": "Ribbedepi in Hasselt (87 m²): eine thematische Wohnung in der Eeuwfeestwijk mit Küchenkiosk und Schreinerarbeiten von Mathijs Huyghebaert und Frits Jeuris."
       }
     }
   },
   "common": {
     "siteName": "Themahuisjes",
-    "moreInfo": "Meer info",
-    "websiteBy": "Website by",
+    "moreInfo": "Mehr Infos",
+    "comingSoon": "Demnächst",
+    "websiteBy": "Website von",
     "languages": {
       "nl": "Nederlands",
       "fr": "Français",
@@ -47,130 +48,130 @@
     }
   },
   "home": {
-    "welcome": "Welkom bij",
+    "welcome": "Willkommen bei",
     "focusHeading": "Themahuisjes"
   },
   "footer": {
     "legal": "Themahuisjes"
   },
   "cookies": {
-    "title": "Privacy- en cookiebeleid",
-    "description": "Door deze website te gebruiken gaat u akkoord met onze voorwaarden omtrent cookies.",
-    "moreInfo": "Meer info",
-    "accept": "Ik ga akkoord"
+    "title": "Datenschutz- und Cookie-Richtlinie",
+    "description": "Durch die Nutzung dieser Website stimmen Sie unseren Cookie-Bedingungen zu.",
+    "moreInfo": "Mehr Infos",
+    "accept": "Ich stimme zu"
   },
   "contact": {
-    "title": "Neem contact op",
-    "note": "Dit formulier is een aanvraag, geen reservatie. Wij nemen zo snel mogelijk contact met u op.",
-    "firstName": "Voornaam*",
-    "lastName": "Familienaam*",
-    "email": "E-mailadres*",
-    "phone": "Telefoonnummer*",
-    "submit": "Verstuur aanvraag",
-    "thankYou": "We hebben jouw vraag goed ontvangen!"
+    "title": "Kontaktieren Sie uns",
+    "note": "Dieses Formular ist eine Anfrage, keine Reservierung. Wir melden uns so schnell wie möglich bei Ihnen.",
+    "firstName": "Vorname*",
+    "lastName": "Nachname*",
+    "email": "E-Mail-Adresse*",
+    "phone": "Telefonnummer*",
+    "submit": "Anfrage senden",
+    "thankYou": "Wir haben Ihre Anfrage erhalten!"
   },
   "notFound": {
-    "title": "Pagina niet gevonden | 404",
-    "cta": "Bezoek onze startpagina"
+    "title": "Seite nicht gefunden | 404",
+    "cta": "Besuchen Sie unsere Startseite"
   },
   "huisjes": {
     "nav": {
-      "gallery": "Beeldmateriaal",
+      "gallery": "Galerie",
       "info": "Info",
-      "story": "Verhaal",
-      "tips": "Tips",
-      "rules": "Huisreglement",
-      "contact": "Contact"
+      "story": "Geschichte",
+      "tips": "Tipps",
+      "rules": "Hausordnung",
+      "contact": "Kontakt"
     },
     "info": {
       "garage": "Garage",
-      "streetParking": "P. straat",
-      "neighborhoodParking": "P. buurt"
+      "streetParking": "Parken Straße",
+      "neighborhoodParking": "Parken Viertel"
     },
     "cta": {
-      "title": "Interesse in deze ervaring?",
-      "button": "Reserveer nu"
+      "title": "Interesse an diesem Erlebnis?",
+      "button": "Jetzt reservieren"
     },
     "gallery": {
-      "prev": "Vorige foto",
-      "next": "Volgende foto",
-      "nav": "Foto navigatie",
+      "prev": "Vorheriges Foto",
+      "next": "Nächstes Foto",
+      "nav": "Fotonavigation",
       "photo": "Foto {number}"
     },
     "rules": {
-      "generalTitle": "Algemene informatie",
-      "generalText": "De accommodaties zijn allen klein van schaal: navigeren door het verblijf gaat het vlotst met handbagage. Wij vragen binnen de verblijven het dragen van pantoffels of barrevoets, de verblijven zijn steeds mooi afgewerkt. Bed en badlinnen zijn aanwezig.",
-      "agreementsTitle": "Afspraken",
+      "generalTitle": "Allgemeine Informationen",
+      "generalText": "Alle Unterkünfte sind klein: Am einfachsten bewegt man sich mit Handgepäck durch die Räume. Wir bitten darum, in den Unterkünften Pantoffeln zu tragen oder barfuß zu gehen; die Unterkünfte sind stets schön ausgestattet. Bett- und Badwäsche sind vorhanden. Die Unterkunft wird nicht tageweise vermietet und ist keine Hotelunterkunft. Wir vermieten für Wochenenden, unter der Woche, Kurzaufenthalte oder auch längere Zeiträume.",
+      "agreementsTitle": "Vereinbarungen",
       "items": [
-        "Geen feestjes of party's.",
-        "Verboden te roken",
-        "Afval na verblijf te verwijderen volgens afspraak",
-        "Alles is netjes en mooi gedecoreerd, het geheel is wat uitzicht betreft zeer kindvriendelijk, doch de afwerking is van die aard, dat we liever alleen 'brave' kinderen zien komen. De verantwoordelijkheid voor schade en ongevallen valt ten laste van de huurder.",
-        "Wij houden van dieren, maar niet in het verblijf."
+        "Keine Feste oder Partys; der Ort wird ebenfalls nicht als Rendezvous-Location vermietet.",
+        "Rauchen verboten",
+        "Abfall nach dem Aufenthalt gemäß Vereinbarung zu entsorgen",
+        "Alles ist ordentlich und schön eingerichtet. In Bezug auf die Aussicht ist das Ganze sehr kinderfreundlich, doch die Ausstattung ist von der Art, dass wir lieber nur wohlerzogene Kinder begrüßen. Die Verantwortung für Schäden und Unfälle trägt der Mieter.",
+        "Wir lieben Tiere, aber nicht in der Unterkunft."
       ]
     },
     "retteketet": {
       "story": [
-        "In het pittoreske en verkeersvrije ankerstraatje (= een soort van middeleeuwse brandgang dwarsgelegen over de hoofdstraten) liggen vele kleine vissershuisjes. (84 m²)",
-        "Een vide boven het gelijkvloers ter hoogte van de voorgevel zorgt ervoor dat door de kleine ramen rijkelijk het zonlicht binnenvalt en dat een bijzonder zicht wordt genomen op de stadsiconen zoals het Belfort. In het kleine stadstuintje werd een annex afgebroken om plaats te geven aan kwalitatieve buitenruimte. De bestaande ommuring zorgt voor een aangenaam klimaat. Uit de wind en eenmaal nat gesproeid, verkoelend bij warme zomerdagen.",
-        "Het interieur is consequent thematisch."
+        "In der malerischen, verkehrsfreien Ankerstraatje (= eine Art mittelalterliche Gasse quer über die Hauptstraßen) liegen viele kleine Fischerhäuschen. (84 m²)",
+        "Ein Hohlraum über dem Erdgeschoss auf Höhe der Vorderfassade sorgt dafür, dass durch die kleinen Fenster reichlich Sonnenlicht einfällt und ein besonderer Blick auf Stadtikonen wie den Belfried möglich ist. Im kleinen Stadthof wurde ein Anbau abgerissen, um Platz für hochwertigen Außenraum zu schaffen. Die bestehende Umfriedung sorgt für ein angenehmes Mikroklima: windgeschützt und, einmal benetzt, kühlend an warmen Sommertagen.",
+        "Das Interieur ist durchgängig thematisch gestaltet."
       ],
       "tips": [
-        "De wandelpromenade langsheen de vaargeul",
-        "De viswinkels aan de Kaai",
-        "De vrijdagsmarkt in Nieuwpoort Stad voormiddag",
-        "Restaurants: De wasserette, M Bistro (high end), Takai Bar, Sailors (volks), Brasserie Nieuwpoort.",
-        "Bakkers: Snauwaert (vloerpistolets), Tartelique (fijn gebak)",
-        "Café The Newport times (lokale bieren)",
-        "Mooie fietsrouten",
-        "Oorlogsmuseum Westfront: uitzicht bovenop monument Albert I.",
+        "Die Promenade entlang des Schifffahrtskanals",
+        "Die Fischgeschäfte am Kaai",
+        "Der Freitagsmarkt am Vormittag in Nieuwpoort Stadt",
+        "Restaurants: De wasserette, M Bistro (High End), Takai Bar, Sailors (volkstümlich), Brasserie Nieuwpoort.",
+        "Bäcker: Snauwaert (Bodenpistolets), Tartelique (feines Gebäck)",
+        "Café The Newport times (lokale Biere)",
+        "Schöne Fahrradrouten",
+        "Kriegsmuseum Westfront: Aussicht auf dem Albert-I.-Denkmal.",
         "Dronkenput in Middelkerke"
       ]
     },
     "vis-a-vis": {
       "story": [
-        "Deze woning maakte deel uit van een voormalige stadsboerderij uit de wederopbouw van Nieuwpoort uit 1922. In oorsprong was het de logistieke ruimte van de stadsboerderij. Ze werd omgevormd tot een kleine woonst. (78,5 m²) Het nog aanwezige katrolsysteem bleef bewaard, alsook de bestaande ter plaatse gestorte vloeren. Aan de binnenzijde werd de woning uitsluitend met één houttype afgewerkt (notenhout). Het bijzondere binnen schrijnwerk werd gemaakt door een Japans opgeleide schrijnwerker Mathijs Huyghebaert en kunstenaar Frits Jeuris.",
-        "Het interieur is consequent thematisch. De woning heeft een klein zonnig tuintje, met een buitentoilet, waarvan de oorspronkelijke wc-deur met het kleine hartje in bewaard is gebleven."
+        "Diese Wohnung war Teil eines ehemaligen Stadtbauernhofs aus dem Wiederaufbau von Nieuwpoort im Jahr 1922. Ursprünglich war es der Logistikraum des Stadtbauernhofs. Sie wurde in eine kleine Wohnung umgebaut. (78,5 m²) Das noch vorhandene Flaschenzugsystem blieb erhalten, ebenso die vor Ort gegossenen Böden. Im Inneren wurde die Wohnung ausschließlich mit einer Holzart (Nussbaum) ausgestattet. Die besondere Innenschreinerarbeit wurde von dem in Japan ausgebildeten Schreiner Mathijs Huyghebaert und dem Künstler Frits Jeuris angefertigt.",
+        "Das Interieur ist durchgängig thematisch gestaltet. Die Wohnung hat einen kleinen sonnigen Hof mit einer Außentoilette, von der die ursprüngliche WC-Tür mit dem kleinen Herz erhalten geblieben ist."
       ],
       "tips": [
-        "De wandelpromenade langsheen de vaargeul",
-        "De viswinkels aan de Kaai",
-        "De vrijdagsmarkt in Nieuwpoort Stad voormiddag",
-        "Restaurants: De wasserette, M Bistro (high end), Takai Bar, Sailors (volks), Brasserie Nieuwpoort.",
-        "Bakkers: Snauwaert (vloerpistolets), Tartelique (fijn gebak)",
-        "Café The Newport times (lokale bieren)",
-        "Mooie fietsrouten",
-        "Oorlogsmuseum Westfront: uitzicht bovenop monument Albert I.",
+        "Die Promenade entlang des Schifffahrtskanals",
+        "Die Fischgeschäfte am Kaai",
+        "Der Freitagsmarkt am Vormittag in Nieuwpoort Stadt",
+        "Restaurants: De wasserette, M Bistro (High End), Takai Bar, Sailors (volkstümlich), Brasserie Nieuwpoort.",
+        "Bäcker: Snauwaert (Bodenpistolets), Tartelique (feines Gebäck)",
+        "Café The Newport times (lokale Biere)",
+        "Schöne Fahrradrouten",
+        "Kriegsmuseum Westfront: Aussicht auf dem Albert-I.-Denkmal.",
         "Dronkenput in Middelkerke"
       ]
     },
     "maison-d-o": {
       "story": [
-        "Een onbewoonbaar verklaard huis (134 m²) werd terug onder handen genomen. De lelies in het hekken, de ronde contouren en het thema 'water' dat er voor ogen was (vandaar de naam \"maison d'O\"), vormden de inspiratie. Doorheen de vele dakramen geflankeerd met spiegels, sijpelt het daglicht naar binnen door grote dakkoepels die zich op zolderniveau bevinden. Door het blauwe basislicht in de zolder en de lichtstralers die vanop de zolder licht geven aan onderliggende vertrekken, lijk je wel te vertoeven in een submarien.",
-        "Het interieur is consequent thematisch."
+        "Ein als unbewohnbar erklärtes Haus (134 m²) wurde wieder in Angriff genommen. Die Lilien im Zaun, die runden Konturen und das Thema „Wasser“, das Pate stand (daher der Name „maison d'O“), bildeten die Inspiration. Durch die zahlreichen Dachfenster, flankiert von Spiegeln, sickert Tageslicht durch große Dachkuppeln auf Dachbodenniveau herein. Durch das blaue Grundlicht auf dem Dachboden und die Lichtstrahlen, die von oben in die darunterliegenden Räume scheinen, fühlt man sich wie in einem U-Boot.",
+        "Das Interieur ist durchgängig thematisch gestaltet."
       ],
       "tips": [
-        "De wandelpromenade langsheen de vaargeul",
-        "De viswinkels aan de Kaai",
-        "De vrijdagsmarkt in Nieuwpoort Stad voormiddag",
-        "Restaurants: De wasserette, M Bistro (high end), Takai Bar, Sailors (volks), Brasserie Nieuwpoort.",
-        "Bakkers: Snauwaert (vloerpistolets), Tartelique (fijn gebak)",
-        "Café The Newport times (lokale bieren)",
-        "Mooie fietsrouten",
-        "Oorlogsmuseum Westfront: uitzicht bovenop monument Albert I.",
+        "Die Promenade entlang des Schifffahrtskanals",
+        "Die Fischgeschäfte am Kaai",
+        "Der Freitagsmarkt am Vormittag in Nieuwpoort Stadt",
+        "Restaurants: De wasserette, M Bistro (High End), Takai Bar, Sailors (volkstümlich), Brasserie Nieuwpoort.",
+        "Bäcker: Snauwaert (Bodenpistolets), Tartelique (feines Gebäck)",
+        "Café The Newport times (lokale Biere)",
+        "Schöne Fahrradrouten",
+        "Kriegsmuseum Westfront: Aussicht auf dem Albert-I.-Denkmal.",
         "Dronkenput in Middelkerke"
       ]
     },
     "ribbedepie": {
       "story": [
-        "Deze woning maakt deel uit van een sociale tuinwijk \"Eeuwfeestwijk\" uit 1925. (87 m²) De wijk werd gebouwd als eerbetoon aan 100 jaar België en nu nog steeds een hechte buurt met een sterke sociale cohesie. De indeling op het gelijkvloers wordt bepaald door een keukenkiosk. De voor- en achterruimte kunnen gescheiden worden door het dichtzetten van luiken. De bewoner is een chef-kok, die met passie en liefde graag onderzoekend kookt voor vrienden. De ruimte en de locatie van de 'kiosk' speelt daar volledig op in. Op de verdiepingen bevinden zich twee slaapkamers met elk een badkamer. De woning heeft een klein zonnig tuintje. Het bijzondere binnen schrijnwerk werd gemaakt door een Japans opgeleide schrijnwerker Mathijs Huyghebaert en kunstenaar Frits Jeuris.",
-        "Het interieur is consequent thematisch."
+        "Diese Wohnung ist Teil einer sozialen Gartensiedlung „Eeuwfeestwijk“ aus dem Jahr 1925. (87 m²) Die Siedlung wurde als Hommage an 100 Jahre Belgien gebaut und ist bis heute ein eng verbundenes Viertel mit starker sozialer Kohäsion. Die Raumaufteilung im Erdgeschoss wird durch einen Küchenkiosk bestimmt. Vorder- und Hinterraum können durch das Schließen von Läden getrennt werden. Der Bewohner ist ein Chefkoch, der mit Leidenschaft und Liebe gerne experimentell für Freunde kocht. Der Raum und die Lage des „Kiosks“ sind vollständig darauf ausgerichtet. In den oberen Stockwerken befinden sich zwei Schlafzimmer, jeweils mit eigenem Badezimmer. Die Wohnung hat einen kleinen sonnigen Hof. Die besondere Innenschreinerarbeit wurde von dem in Japan ausgebildeten Schreiner Mathijs Huyghebaert und dem Künstler Frits Jeuris angefertigt.",
+        "Das Interieur ist durchgängig thematisch gestaltet."
       ],
       "tips": [
-        "Winkel wandel stad Hasselt",
-        "Z 33, mooie realisatie",
-        "Restaurant: Nostalgia Griek, Taste of India, pocomatto (pasta), favorite Entrepot del Tartufo, en vele andere...",
-        "Fietsen door het water (Bokrijk), fietsroute netwerk."
+        "Einkaufsbummel in der Innenstadt von Hasselt",
+        "Z 33, schöne Realisierung",
+        "Restaurants: Nostalgia Griek, Taste of India, pocomatto (Pasta), Favorit Entrepot del Tartufo, und viele weitere...",
+        "Radfahren durchs Wasser (Bokrijk), Fahrradroutennetz."
       ]
     }
   }
