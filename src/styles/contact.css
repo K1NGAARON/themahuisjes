@@ -25,13 +25,13 @@
 
 .banner.contact .legal {
     color: var(--white);
-    font-size: 24px;
+    font-size: var(--text-xl);
     margin-top: 20px;
 }
 
 .banner.contact .contact-note {
     color: var(--white);
-    font-size: 20px;
+    font-size: var(--text-lg);
     line-height: 1.5;
     max-width: 480px;
     margin: 20px 0 0;

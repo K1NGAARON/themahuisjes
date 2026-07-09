@@ -21,6 +21,21 @@
     --vis-a-vis: #4b1d05;
     --maison-d-o: #8d9eb1;
     --ribbedepie: #bb946d;
+
+    --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+    --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+    --text-base: clamp(0.875rem, 0.85rem + 0.35vw, 1rem);
+    --text-md: clamp(0.875rem, 0.8rem + 0.5vw, 1.125rem);
+    --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.375rem);
+    --text-xl: clamp(1.25rem, 0.9rem + 1.75vw, 2rem);
+    --text-2xl: clamp(1.5rem, 1.1rem + 2vw, 2.25rem);
+    --text-3xl: clamp(1.625rem, 1.2rem + 2.5vw, 2.625rem);
+    --text-hero: clamp(1.75rem, 1rem + 4.5vw, 3.75rem);
+    --text-display-sm: clamp(1.75rem, 0.75rem + 6vw, 5.3125rem);
+    --text-display: clamp(2.25rem, 0.5rem + 10vw, 7.5rem);
+    --text-subtitle: clamp(1rem, 0.75rem + 1.5vw, 1.875rem);
+    --text-icon-lg: clamp(2rem, 1rem + 5vw, 4.375rem);
+    --text-info-value: clamp(1.25rem, 0.75rem + 2.5vw, 2.5rem);
 }
 
 html {
@@ -43,19 +58,19 @@ h3 {
 }
 
 h1 {
-    font-size: 42px;
+    font-size: var(--text-3xl);
 }
 
 h2 {
-    font-size: 36px;
+    font-size: var(--text-2xl);
 }
 
 h3 {
-    font-size: 32px;
+    font-size: var(--text-xl);
 }
 
 h4 {
-    font-size: 22px;
+    font-size: var(--text-lg);
 }
 
 a {
@@ -64,7 +79,7 @@ a {
 }
 
 p {
-    font-size: 16px;
+    font-size: var(--text-base);
 }
 
 p.width-60 {
@@ -97,7 +112,7 @@ img {
 .legal-item a, 
 .legal-item p {
     color: var(--black);
-    font-size: 16px;
+    font-size: var(--text-base);
     transition: var(--transition);
 }
 
@@ -175,6 +190,7 @@ img {
 
 .btn {
     width: fit-content;
+    font-size: var(--text-sm);
     font-weight: 700;
     text-decoration: none;
     text-align: center;
@@ -248,7 +264,7 @@ img {
 
 .form-wrapper .form-row label {
     color: var(--black);
-    font-size: 18px;
+    font-size: var(--text-md);
 }
 
 .form-wrapper input {
@@ -262,7 +278,7 @@ img {
     border-radius: 0;
     height: 60px;
     outline: none;
-    font-size: 18px;
+    font-size: var(--text-md);
     transition: border-bottom 200ms ease;
 }
 
@@ -328,7 +344,7 @@ img {
 .contact .legal .legal-item a, 
 .contact .legal .legal-item p {
     color: var(--black);
-    font-size: 16px;
+    font-size: var(--text-base);
     transition: var(--transition);
 }
 
@@ -398,26 +414,6 @@ img {
         padding: 0 30px;
     }
 
-    p,
-    .btn {
-        font-size: 14px;
-    }
-
-    h1 {
-        font-size: 26px;
-    }
-
-    h2 {
-        font-size: 24px;
-    }
-
-    h3 {
-        font-size: 20px;
-    }
-
-    .form-wrapper input {
-        font-size: 14px;
-    }
 }
 
 @media (max-width: 1000px) {

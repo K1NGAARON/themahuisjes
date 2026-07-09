@@ -7,15 +7,15 @@ html {
 }
 
 .container .content .item h1 {
-    font-size: 120px;
+    font-size: var(--text-display);
 }
 
 .container .content .item h2 {
-    font-size: 85px;
+    font-size: var(--text-display-sm);
 }
 
 .container .content .item p {
-    font-size: 30px;
+    font-size: var(--text-subtitle);
     text-align: justify;
 }
 
@@ -25,7 +25,7 @@ html {
 
 .container .content .item.text-list p,
 .container .content .item.text-list ol {
-    font-size: 30px;
+    font-size: var(--text-subtitle);
     line-height: 1.5;
     text-align: justify;
 }
@@ -96,7 +96,7 @@ html {
 .container .navbar a {
     color: var(--white);
     font-weight: 400;
-    font-size: 32px;
+    font-size: var(--text-xl);
     opacity: 0.6;
     transition: var(--transition);
 }
@@ -125,11 +125,11 @@ html {
 }
 
 .container .content .info-wrapper .item i {
-    font-size: 70px;
+    font-size: var(--text-icon-lg);
 }
 
 .container .content .info-wrapper .item .info-value p {
-    font-size: 40px;
+    font-size: var(--text-info-value);
     color: var(--green);
     margin: 0;
     text-align: right;
@@ -220,7 +220,7 @@ html {
     border-radius: 50%;
     background: rgba(0, 0, 0, 0.45);
     color: var(--white);
-    font-size: 20px;
+    font-size: var(--text-md);
     cursor: pointer;
     opacity: 0.75;
     transition: var(--transition);
