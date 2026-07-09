@@ -21,12 +21,12 @@ export default function LanguageSwitcher() {
   }
 
   return (
-    <nav className="language-switcher" aria-label="Language">
+    <nav className="language-switcher notranslate" aria-label="Language">
       {routing.locales.map((code) => (
         <button
           key={code}
           type="button"
-          className={code === locale ? "is-active" : undefined}
+          className={`notranslate${code === locale ? " is-active" : ""}`}
           onClick={() => switchLocale(code)}
           aria-current={code === locale ? "true" : undefined}
         >

@@ -37,6 +37,8 @@ body {
     display: flex;
     flex-direction: column;
     position: relative;
+    cursor: pointer;
+    color: inherit;
 }
 
 .projects-wrapper .item.large {
@@ -78,7 +80,7 @@ body {
 
 .projects-wrapper .item h3,
 .projects-wrapper .item p,
-.projects-wrapper .item a {
+.projects-wrapper .item .more-info {
     color: var(--white);
 }
 

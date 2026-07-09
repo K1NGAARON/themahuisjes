@@ -2,6 +2,7 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import type { HuisjeFacts, HuisjeSlug } from "@/data/huisjes";
 import GalleryCarousel from "@/components/GalleryCarousel";
+import ScrollBackground from "@/components/ScrollBackground";
 
 function BoolIcon({ value }: { value: boolean }) {
   return (
@@ -11,7 +12,13 @@ function BoolIcon({ value }: { value: boolean }) {
   );
 }
 
-export default function HuisjePage({ huisje }: { huisje: HuisjeFacts }) {
+export default function HuisjePage({
+  huisje,
+  galleryImages,
+}: {
+  huisje: HuisjeFacts;
+  galleryImages: string[];
+}) {
   const t = useTranslations("huisjes");
   const slug = huisje.slug as HuisjeSlug;
   const story = t.raw(`${slug}.story`) as string[];
@@ -20,12 +27,13 @@ export default function HuisjePage({ huisje }: { huisje: HuisjeFacts }) {
 
   return (
     <>
+      <ScrollBackground />
       <div className="container first-container">
         <div className="content">
           <div className="item" />
           <div className="item bg">
             <p className="city">{huisje.city}</p>
-            <h1>{huisje.name}</h1>
+            <h1 className="notranslate">{huisje.name}</h1>
             <nav className="navbar">
               <a href="#beeldmateriaal">{t("nav.gallery")}</a>
               <a href="#info">{t("nav.info")}</a>
@@ -50,6 +58,18 @@ export default function HuisjePage({ huisje }: { huisje: HuisjeFacts }) {
                 <div className="info-value">
                   <p>{huisje.beds}</p>
                 </div>
+              </div>
+              <div className="item">
+                <div className="icon">
+                  <img src="/assets/icons/bed.png" alt={t("info.bedLinen")} />
+                </div>
+                <BoolIcon value={true} />
+              </div>
+              <div className="item">
+                <div className="icon">
+                  <img src="/assets/icons/bad.png" alt={t("info.bathLinen")} />
+                </div>
+                <BoolIcon value={true} />
               </div>
               <div className="item">
                 <div className="icon">
@@ -100,7 +120,7 @@ export default function HuisjePage({ huisje }: { huisje: HuisjeFacts }) {
         </div>
 
         <div className="content pd-0 height-fit-content" id="beeldmateriaal">
-          <GalleryCarousel slug={slug} />
+          <GalleryCarousel slug={slug} images={galleryImages} />
         </div>
 
         <div className="content height-fit-content" id="tips">

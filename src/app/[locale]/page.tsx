@@ -30,25 +30,29 @@ export default async function HomePage({
         </h1>
         <div className="projects-wrapper">
           {huisjes.map((huisje) => (
-            <div key={huisje.slug} className={`item ${huisje.themeClass}`}>
+            <Link
+              key={huisje.slug}
+              href={`/huisjes/${huisje.slug}`}
+              className={`item ${huisje.themeClass}`}
+            >
               <img
                 src={getHuisjeBannerImage(huisje.slug)}
                 alt={huisje.name}
               />
               <div className="content">
                 <p className="city">{huisje.city}</p>
-                <h3>{huisje.name}</h3>
-                <Link href={`/huisjes/${huisje.slug}`}>{tc("moreInfo")}</Link>
+                <h3 className="notranslate">{huisje.name}</h3>
+                <span className="more-info">{tc("moreInfo")}</span>
               </div>
               <div className="overlay" />
-            </div>
+            </Link>
           ))}
           {comingSoonHuisjes.map((huisje) => (
             <div key={huisje.slug} className="item coming-soon">
               <img src={huisje.frontImage} alt={huisje.name} />
               <div className="coming-soon-content">
                 {huisje.city ? <p className="city">{huisje.city}</p> : null}
-                <h3>{huisje.name}</h3>
+                <h3 className="notranslate">{huisje.name}</h3>
                 <span className="badge">{tc("comingSoon")}</span>
               </div>
               <div className="coming-soon-overlay" />

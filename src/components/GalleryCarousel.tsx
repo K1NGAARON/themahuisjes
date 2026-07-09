@@ -1,36 +1,43 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import type { HuisjeSlug } from "@/data/huisjes";
+import { getGalleryImageSrc } from "@/lib/gallery";
+import {
+  getGalleryImageCacheStatus,
+  markGalleryImageError,
+  markGalleryImageLoaded,
+  prefetchGalleryImage,
+} from "@/lib/gallery-image-cache";
 
 interface GalleryCarouselProps {
   slug: HuisjeSlug;
+  images: string[];
 }
 
 const MAX_RETRIES = 3;
 const RETRY_DELAYS_MS = [1000, 2000, 4000];
-
-function galleryImageSrc(slug: HuisjeSlug, path: string) {
-  return `/huisjes/${slug}/img/${path.split("/").map(encodeURIComponent).join("/")}`;
-}
+const VIEWPORT_ROOT_MARGIN = "320px";
 
 function GalleryImage({
   src,
   alt,
-  priority,
+  fetchPriority,
 }: {
   src: string;
   alt: string;
-  priority: boolean;
+  fetchPriority: "high" | "low" | "auto";
 }) {
   const t = useTranslations("huisjes.gallery");
-  const [loaded, setLoaded] = useState(false);
+  const [loaded, setLoaded] = useState(
+    () => getGalleryImageCacheStatus(src) === "loaded",
+  );
   const [failed, setFailed] = useState(false);
   const [retryCount, setRetryCount] = useState(0);
 
   useEffect(() => {
-    setLoaded(false);
+    setLoaded(getGalleryImageCacheStatus(src) === "loaded");
     setFailed(false);
     setRetryCount(0);
   }, [src]);
@@ -53,6 +60,25 @@ function GalleryImage({
     setRetryCount((count) => count + 1);
   }
 
+  async function handleLoad(event: React.SyntheticEvent<HTMLImageElement>) {
+    const image = event.currentTarget;
+
+    try {
+      await image.decode();
+    } catch {
+      // decode() can fail on unsupported formats; onLoad still means bytes arrived.
+    }
+
+    setLoaded(true);
+    setFailed(false);
+    markGalleryImageLoaded(src);
+  }
+
+  function handleError() {
+    setFailed(true);
+    markGalleryImageError(src);
+  }
+
   return (
     <div className={`gallery-carousel__frame${loaded ? " is-loaded" : ""}`}>
       {!loaded && !failed && (
@@ -71,61 +97,84 @@ function GalleryImage({
           key={`${src}-${retryCount}`}
           src={src}
           alt={alt}
-          loading={priority ? "eager" : "lazy"}
+          loading="eager"
           decoding="async"
+          fetchPriority={fetchPriority}
           className={loaded ? "is-visible" : undefined}
-          onLoad={() => {
-            setLoaded(true);
-            setFailed(false);
-          }}
-          onError={() => setFailed(true)}
+          onLoad={handleLoad}
+          onError={handleError}
         />
       )}
     </div>
   );
 }
 
-function orderImages(images: string[]) {
-  const rest = [...images];
-  const frontIndex = rest.findIndex(
-    (path) => path.split("/").pop()?.toLowerCase() === "front.jpg",
-  );
+function measureCarouselLayout(
+  track: HTMLDivElement,
+  viewport: HTMLDivElement,
+  slideCount: number,
+) {
+  const slides = Array.from(track.children) as HTMLElement[];
+  const offsets = slides.slice(0, slideCount).map((slide) => slide.offsetLeft);
+  const trackWidth = track.scrollWidth;
+  const viewportWidth = viewport.clientWidth;
+  const maxScroll = Math.max(0, trackWidth - viewportWidth);
 
-  let front: string | null = null;
-  if (frontIndex !== -1) {
-    front = rest.splice(frontIndex, 1)[0] ?? null;
+  let maxIndex = 0;
+  for (let index = 0; index < offsets.length; index++) {
+    if (offsets[index] <= maxScroll + 1) {
+      maxIndex = index;
+    } else {
+      break;
+    }
   }
 
-  for (let i = rest.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [rest[i], rest[j]] = [rest[j], rest[i]];
-  }
-
-  return front ? [front, ...rest] : rest;
+  return {
+    offsets,
+    maxIndex,
+    hideNav: trackWidth <= viewportWidth + 1,
+  };
 }
 
-export default function GalleryCarousel({ slug }: GalleryCarouselProps) {
+export default function GalleryCarousel({ slug, images }: GalleryCarouselProps) {
   const t = useTranslations("huisjes.gallery");
-  const [images, setImages] = useState<string[]>([]);
+  const rootRef = useRef<HTMLDivElement>(null);
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [isNearViewport, setIsNearViewport] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [visibleCount, setVisibleCount] = useState(1);
+  const [layout, setLayout] = useState({
+    offsets: [0],
+    maxIndex: 0,
+    hideNav: true,
+  });
 
   useEffect(() => {
-    fetch(`/huisjes/${slug}/img/gallery.json`)
-      .then((response) => {
-        if (!response.ok) throw new Error("Manifest not found");
-        return response.json();
-      })
-      .then((data: { images?: string[] }) => {
-        const ordered = orderImages(data.images ?? []);
-        setImages(ordered);
-      })
-      .catch(() => setImages([]));
-  }, [slug]);
+    setCurrentIndex(0);
+  }, [slug, images]);
+
+  useEffect(() => {
+    const root = rootRef.current;
+    if (!root) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsNearViewport(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: VIEWPORT_ROOT_MARGIN },
+    );
+
+    observer.observe(root);
+    return () => observer.disconnect();
+  }, [images.length]);
 
   useEffect(() => {
     function updateVisibleCount() {
-      const carousel = document.querySelector(".gallery-carousel");
+      const carousel = rootRef.current;
       if (!carousel) return;
       const value = getComputedStyle(carousel).getPropertyValue("--gallery-visible");
       const parsed = parseInt(value, 10);
@@ -137,8 +186,49 @@ export default function GalleryCarousel({ slug }: GalleryCarouselProps) {
     return () => window.removeEventListener("resize", updateVisibleCount);
   }, [images.length]);
 
-  const maxIndex = Math.max(0, images.length - visibleCount);
-  const hideNav = images.length <= visibleCount;
+  useEffect(() => {
+    const track = trackRef.current;
+    const viewport = viewportRef.current;
+    if (!track || !viewport || !images.length) return;
+
+    function updateLayout() {
+      const nextTrack = trackRef.current;
+      const nextViewport = viewportRef.current;
+      if (!nextTrack || !nextViewport) return;
+      setLayout(measureCarouselLayout(nextTrack, nextViewport, images.length));
+    }
+
+    updateLayout();
+
+    const observer = new ResizeObserver(updateLayout);
+    observer.observe(track);
+    observer.observe(viewport);
+    for (const slide of track.children) {
+      observer.observe(slide);
+    }
+
+    return () => observer.disconnect();
+  }, [images, isNearViewport]);
+
+  useEffect(() => {
+    if (!isNearViewport) return;
+
+    const mountedStart = Math.max(0, currentIndex - 1);
+    const mountedEnd = Math.min(images.length - 1, currentIndex + visibleCount);
+    const prefetchEnd = Math.min(images.length - 1, mountedEnd + 2);
+
+    for (let index = mountedEnd + 1; index <= prefetchEnd; index++) {
+      void prefetchGalleryImage(getGalleryImageSrc(slug, images[index]));
+    }
+
+    if (mountedStart > 0) {
+      void prefetchGalleryImage(getGalleryImageSrc(slug, images[mountedStart - 1]));
+    }
+  }, [currentIndex, images, isNearViewport, slug, visibleCount]);
+
+  const maxIndex = layout.maxIndex;
+  const hideNav = layout.hideNav;
+  const trackOffset = layout.offsets[currentIndex] ?? 0;
 
   const goTo = useCallback(
     (index: number) => {
@@ -165,7 +255,7 @@ export default function GalleryCarousel({ slug }: GalleryCarouselProps) {
   }
 
   return (
-    <div className="gallery-carousel" data-gallery>
+    <div className="gallery-carousel" data-gallery ref={rootRef}>
       <button
         type="button"
         className="gallery-carousel__btn gallery-carousel__btn--prev"
@@ -175,24 +265,28 @@ export default function GalleryCarousel({ slug }: GalleryCarouselProps) {
       >
         <i className="fa-solid fa-chevron-left" aria-hidden="true" />
       </button>
-      <div className="gallery-carousel__viewport">
+      <div className="gallery-carousel__viewport" ref={viewportRef}>
         <div
+          ref={trackRef}
           className="gallery-carousel__track"
           role="list"
-          style={{ "--gallery-index": currentIndex } as React.CSSProperties}
+          style={{ transform: `translateX(-${trackOffset}px)` }}
         >
           {images.map((path, index) => {
-            const shouldLoad =
+            const isVisible =
+              index >= currentIndex && index < currentIndex + visibleCount;
+            const isAdjacent =
               index >= currentIndex - 1 &&
               index <= currentIndex + visibleCount;
+            const shouldLoad = isNearViewport && isAdjacent;
 
             return (
               <div key={path} className="gallery-carousel__slide" role="listitem">
                 {shouldLoad ? (
                   <GalleryImage
-                    src={galleryImageSrc(slug, path)}
+                    src={getGalleryImageSrc(slug, path)}
                     alt={t("photo", { number: index + 1 })}
-                    priority={index >= currentIndex && index < currentIndex + visibleCount}
+                    fetchPriority={isVisible ? "high" : "low"}
                   />
                 ) : (
                   <div className="gallery-carousel__placeholder" aria-hidden="true" />

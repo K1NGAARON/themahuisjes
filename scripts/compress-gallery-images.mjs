@@ -17,6 +17,10 @@ function formatBytes(bytes) {
   return `${(bytes / (1024 * 1024)).toFixed(2)} MB`;
 }
 
+function normalizeImageName(imageName) {
+  return imageName.normalize("NFC");
+}
+
 async function fileExists(filePath) {
   try {
     await fs.access(filePath);
@@ -35,7 +39,7 @@ async function collectImagePaths() {
     const gallery = JSON.parse(await fs.readFile(galleryJsonPath, "utf8"));
 
     for (const image of gallery.images ?? []) {
-      imagePaths.add(path.join(imgDir, image));
+      imagePaths.add(path.join(imgDir, normalizeImageName(image)));
     }
 
     imagePaths.add(path.join(imgDir, "banner.jpg"));
@@ -198,14 +202,14 @@ async function updateGalleryReference(oldPath, newPath) {
   }
 
   const gallery = JSON.parse(await fs.readFile(galleryJsonPath, "utf8"));
-  const images = gallery.images ?? [];
-  const index = images.indexOf(oldName);
+  const images = (gallery.images ?? []).map(normalizeImageName);
+  const index = images.indexOf(normalizeImageName(oldName));
 
   if (index === -1) {
     return;
   }
 
-  images[index] = newName;
+  images[index] = normalizeImageName(newName);
   gallery.images = images;
   await fs.writeFile(galleryJsonPath, `${JSON.stringify(gallery, null, 2)}\n`);
 }

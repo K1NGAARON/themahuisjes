@@ -86,7 +86,9 @@
     "info": {
       "garage": "Garage",
       "streetParking": "P. straat",
-      "neighborhoodParking": "P. buurt"
+      "neighborhoodParking": "P. buurt",
+      "bedLinen": "Bedlinnen",
+      "bathLinen": "Badlinnen"
     },
     "cta": {
       "title": "Interesse in deze ervaring?",

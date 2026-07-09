@@ -1,7 +1,9 @@
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import HuisjePage from "@/components/HuisjePage";
-import { getHuisje, huisjeSlugs } from "@/data/huisjes";
+import { getHuisje, huisjeSlugs, type HuisjeSlug } from "@/data/huisjes";
+import { getGalleryImageSrc } from "@/lib/gallery";
+import { getGalleryImages } from "@/lib/gallery-server";
 import "@/styles/home.css";
 import "@/styles/huisjes.css";
 
@@ -22,8 +24,22 @@ export default async function HuisjeDetailPage({
   }
 
   setRequestLocale(locale);
+  const galleryImages = await getGalleryImages(slug);
+  const firstImage = galleryImages[0];
 
-  return <HuisjePage huisje={huisje} />;
+  return (
+    <>
+      {firstImage ? (
+        <link
+          rel="preload"
+          as="image"
+          href={getGalleryImageSrc(slug as HuisjeSlug, firstImage)}
+          fetchPriority="high"
+        />
+      ) : null}
+      <HuisjePage huisje={huisje} galleryImages={galleryImages} />
+    </>
+  );
 }
 
 export async function generateMetadata({
