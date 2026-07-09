@@ -220,6 +220,7 @@ html {
 
 .container .content.pd-0 {
     padding: 0;
+	/* margin: 0; */
 }
 
 .container .content.height-fit-content {
