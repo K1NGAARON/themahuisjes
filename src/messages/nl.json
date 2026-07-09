@@ -96,7 +96,8 @@
       "prev": "Vorige foto",
       "next": "Volgende foto",
       "nav": "Foto navigatie",
-      "photo": "Foto {number}"
+      "photo": "Foto {number}",
+      "retry": "Foto opnieuw laden"
     },
     "rules": {
       "generalTitle": "Algemene informatie",

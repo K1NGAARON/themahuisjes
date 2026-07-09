@@ -8,6 +8,83 @@ interface GalleryCarouselProps {
   slug: HuisjeSlug;
 }
 
+const MAX_RETRIES = 3;
+const RETRY_DELAYS_MS = [1000, 2000, 4000];
+
+function galleryImageSrc(slug: HuisjeSlug, path: string) {
+  return `/huisjes/${slug}/img/${path.split("/").map(encodeURIComponent).join("/")}`;
+}
+
+function GalleryImage({
+  src,
+  alt,
+  priority,
+}: {
+  src: string;
+  alt: string;
+  priority: boolean;
+}) {
+  const t = useTranslations("huisjes.gallery");
+  const [loaded, setLoaded] = useState(false);
+  const [failed, setFailed] = useState(false);
+  const [retryCount, setRetryCount] = useState(0);
+
+  useEffect(() => {
+    setLoaded(false);
+    setFailed(false);
+    setRetryCount(0);
+  }, [src]);
+
+  useEffect(() => {
+    if (!failed || retryCount >= MAX_RETRIES) return;
+
+    const delay = RETRY_DELAYS_MS[retryCount] ?? 4000;
+    const timer = window.setTimeout(() => {
+      setFailed(false);
+      setRetryCount((count) => count + 1);
+    }, delay);
+
+    return () => window.clearTimeout(timer);
+  }, [failed, retryCount]);
+
+  function handleRetry() {
+    setLoaded(false);
+    setFailed(false);
+    setRetryCount((count) => count + 1);
+  }
+
+  return (
+    <div className={`gallery-carousel__frame${loaded ? " is-loaded" : ""}`}>
+      {!loaded && !failed && (
+        <div className="gallery-carousel__placeholder" aria-hidden="true" />
+      )}
+      {failed && retryCount >= MAX_RETRIES ? (
+        <button
+          type="button"
+          className="gallery-carousel__retry"
+          onClick={handleRetry}
+        >
+          {t("retry")}
+        </button>
+      ) : (
+        <img
+          key={`${src}-${retryCount}`}
+          src={src}
+          alt={alt}
+          loading={priority ? "eager" : "lazy"}
+          decoding="async"
+          className={loaded ? "is-visible" : undefined}
+          onLoad={() => {
+            setLoaded(true);
+            setFailed(false);
+          }}
+          onError={() => setFailed(true)}
+        />
+      )}
+    </div>
+  );
+}
+
 function orderImages(images: string[]) {
   const rest = [...images];
   const frontIndex = rest.findIndex(
@@ -104,15 +181,25 @@ export default function GalleryCarousel({ slug }: GalleryCarouselProps) {
           role="list"
           style={{ "--gallery-index": currentIndex } as React.CSSProperties}
         >
-          {images.map((path, index) => (
-            <div key={path} className="gallery-carousel__slide" role="listitem">
-              <img
-                src={`/huisjes/${slug}/img/${path}`}
-                alt={t("photo", { number: index + 1 })}
-                loading={index === 0 ? "eager" : "lazy"}
-              />
-            </div>
-          ))}
+          {images.map((path, index) => {
+            const shouldLoad =
+              index >= currentIndex - 1 &&
+              index <= currentIndex + visibleCount;
+
+            return (
+              <div key={path} className="gallery-carousel__slide" role="listitem">
+                {shouldLoad ? (
+                  <GalleryImage
+                    src={galleryImageSrc(slug, path)}
+                    alt={t("photo", { number: index + 1 })}
+                    priority={index >= currentIndex && index < currentIndex + visibleCount}
+                  />
+                ) : (
+                  <div className="gallery-carousel__placeholder" aria-hidden="true" />
+                )}
+              </div>
+            );
+          })}
         </div>
       </div>
       <button
