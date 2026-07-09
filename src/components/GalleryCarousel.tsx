@@ -102,9 +102,7 @@ export default function GalleryCarousel({ slug }: GalleryCarouselProps) {
         <div
           className="gallery-carousel__track"
           role="list"
-          style={{
-            transform: `translateX(-${currentIndex * (100 / visibleCount)}%)`,
-          }}
+          style={{ "--gallery-index": currentIndex } as React.CSSProperties}
         >
           {images.map((path, index) => (
             <div key={path} className="gallery-carousel__slide" role="listitem">

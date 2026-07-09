@@ -23,7 +23,7 @@ export const huisjeSlugs: HuisjeSlug[] = [
 export const huisjes: HuisjeFacts[] = [
   {
     slug: "retteketet",
-    name: "Retteketet",
+    name: "RetekeTet",
     city: "Nieuwpoort",
     beds: "5 (2 + 2 + 1)",
     bicycle: false,
@@ -59,7 +59,7 @@ export const huisjes: HuisjeFacts[] = [
   },
   {
     slug: "ribbedepie",
-    name: "Ribbedepi",
+    name: "RibbedePi",
     city: "Hasselt",
     beds: "4 (2 + 2)",
     bicycle: false,

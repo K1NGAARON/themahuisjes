@@ -158,6 +158,7 @@ html {
     width: 100%;
     max-width: 100%;
     --gallery-visible: 3;
+    --gallery-gap: 16px;
 }
 
 .gallery-carousel[hidden] {
@@ -165,30 +166,29 @@ html {
 }
 
 .gallery-carousel__viewport {
+    container-type: inline-size;
     overflow: hidden;
     width: 100%;
-    height: 60vh;
-    max-height: 700px;
     background: rgba(0, 0, 0, 0.4);
 }
 
 .gallery-carousel__track {
     display: flex;
-    height: 100%;
+    gap: var(--gallery-gap);
+    align-items: center;
     transition: transform 0.45s ease;
+    transform: translateX(calc(-1 * var(--gallery-index, 0) * (100cqw + var(--gallery-gap)) / var(--gallery-visible)));
 }
 
 .gallery-carousel__slide {
-    flex: 0 0 calc(100% / var(--gallery-visible));
-    height: 100%;
-    padding: 0 12px;
-    box-sizing: border-box;
+    flex: 0 0 calc((100% - (var(--gallery-visible) - 1) * var(--gallery-gap)) / var(--gallery-visible));
 }
 
 .gallery-carousel__slide img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
+    max-height: 70vh;
+    object-fit: contain;
     display: block;
 }
 

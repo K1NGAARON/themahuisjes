@@ -6,6 +6,7 @@ import { routing, type Locale } from "@/i18n/routing";
 import CookieBanner from "@/components/CookieBanner";
 import GoogleTagManager from "@/components/GoogleTagManager";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import SiteLogo from "@/components/SiteLogo";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -68,6 +69,7 @@ export default async function LocaleLayout({
       <body>
         <GoogleTagManager />
         <NextIntlClientProvider messages={messages}>
+          <SiteLogo />
           <LanguageSwitcher />
           {children}
           <CookieBanner />
