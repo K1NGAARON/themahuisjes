@@ -2,7 +2,6 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import type { HuisjeFacts, HuisjeSlug } from "@/data/huisjes";
 import GalleryCarousel from "@/components/GalleryCarousel";
-import ScrollBackground from "@/components/ScrollBackground";
 
 function BoolIcon({ value }: { value: boolean }) {
   return (
@@ -21,7 +20,6 @@ export default function HuisjePage({ huisje }: { huisje: HuisjeFacts }) {
 
   return (
     <>
-      <ScrollBackground />
       <div className="container first-container">
         <div className="content">
           <div className="item" />
@@ -90,7 +88,7 @@ export default function HuisjePage({ huisje }: { huisje: HuisjeFacts }) {
           </div>
         </div>
 
-        <div className="content" id="verhaal">
+        <div className="content height-fit-content" id="verhaal">
           <div className="item">
             {story.map((paragraph) => (
               <p key={paragraph.slice(0, 40)}>{paragraph}</p>

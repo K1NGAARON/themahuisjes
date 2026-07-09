@@ -31,7 +31,12 @@ export default function CookieBanner() {
             <Link id="more-info" href="/legal/cookie-policy">
               {t("moreInfo")}
             </Link>
-            <button type="button" id="accept-cookies" onClick={acceptCookies}>
+            <button
+              type="button"
+              id="accept-cookies"
+              className="btn"
+              onClick={acceptCookies}
+            >
               {t("accept")}
             </button>
           </div>

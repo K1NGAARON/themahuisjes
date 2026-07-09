@@ -29,12 +29,3 @@
 .language-switcher button:hover {
   background: rgba(255, 255, 255, 0.18);
 }
-
-.cookie-banner-content button#accept-cookies {
-  border: none;
-  background: transparent;
-  color: inherit;
-  font: inherit;
-  cursor: pointer;
-  text-decoration: underline;
-}

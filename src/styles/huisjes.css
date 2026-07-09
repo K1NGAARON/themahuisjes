@@ -45,7 +45,7 @@ html {
 
 .container.first-container .item.bg {
     padding-left: 30px;
-    background: rgba(0, 0, 0, 0.25);
+    background: rgba(0, 0, 0, 0.45);
 }
 
 .container .content {
@@ -58,8 +58,7 @@ html {
     text-align: center;
     color: var(--white);
     padding: 0 30px;
-    background: rgba(0, 0, 0, 0.25);
-    transition: background 0.5s;
+    background: rgba(0, 0, 0, 0.55);
 }
 
 .container .content .item {
@@ -268,4 +267,119 @@ html {
 .gallery-carousel__dot.is-active,
 .gallery-carousel__dot:hover {
     background: var(--white);
+}
+
+@media (max-width: 768px) {
+    body,
+    html {
+        overflow-x: hidden;
+    }
+
+    .container .content {
+        flex-direction: column;
+        height: auto;
+        min-height: 100vh;
+        padding: 48px 24px;
+        align-items: stretch;
+        text-align: left;
+        gap: 24px;
+        background: rgba(0, 0, 0, 0.6);
+    }
+
+    .container .content.pd-0 {
+        padding: 0;
+        background: rgba(0, 0, 0, 0.45);
+    }
+
+    .container .content.height-fit-content {
+        padding-top: 48px;
+        padding-bottom: 48px;
+    }
+
+    .container.first-container > .content:first-child {
+        padding: 72px 24px 48px;
+        gap: 0;
+    }
+
+    .container.first-container > .content:first-child > .item:first-child:not(.bg) {
+        display: none;
+    }
+
+    .container.first-container > .content:first-child .item.bg {
+        padding-left: 0;
+        width: 100%;
+        align-items: center;
+        text-align: center;
+        background: rgba(0, 0, 0, 0.45);
+    }
+
+    .container.first-container .navbar {
+        align-items: center;
+    }
+
+    .container .content .item {
+        flex: none;
+        width: 100%;
+        height: auto;
+        min-height: 0;
+    }
+
+    .container .content .item.align-end,
+    .container .content .item.justify-end {
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
+    .container .content .item.align-center {
+        align-items: center;
+        text-align: center;
+    }
+
+    .container .content .item h1,
+    .container .content .item h2 {
+        width: 100%;
+    }
+
+    .container .content .item p,
+    .container .content .item.text-list,
+    .container .content .item.text-list p,
+    .container .content .item.text-list ol {
+        text-align: left;
+    }
+
+    #verhaal.content .item:last-child,
+    #regels.content .item:last-child {
+        order: -1;
+    }
+
+    .container .content .info-wrapper {
+        width: 100%;
+        gap: 28px;
+    }
+
+    .container .content .info-wrapper .item {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 16px;
+    }
+
+    .container .content .info-wrapper .item .icon {
+        flex-shrink: 0;
+    }
+
+    .container .content .info-wrapper .item .item-col {
+        gap: 4px;
+    }
+
+    .container .content .info-wrapper .item .info-value p {
+        text-align: left;
+        margin: 0;
+    }
+
+    .container .content .info-wrapper .item .checkbox {
+        flex-shrink: 0;
+    }
 }
