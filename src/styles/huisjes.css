@@ -11,7 +11,7 @@ html {
 }
 
 .container .content .item h2 {
-    font-size: 110px;
+    font-size: 85px;
 }
 
 .container .content .item p {
@@ -73,6 +73,7 @@ html {
 
 .container .content .item.justify-end {
     justify-content: flex-end;
+    align-self: stretch;
 }
 
 .container .content .item.align-end {
