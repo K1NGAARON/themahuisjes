@@ -95,9 +95,6 @@ export function getHuisje(slug: string): HuisjeFacts | undefined {
   return huisjes.find((huisje) => huisje.slug === slug);
 }
 
-export const huisjeStyles: Record<HuisjeSlug, string> = {
-  retteketet: "huisje-retteketet.css",
-  "vis-a-vis": "huisje-vis-a-vis.css",
-  "maison-d-o": "huisje-maison-d-o.css",
-  ribbedepie: "huisje-ribbedepie.css",
-};
+export function getHuisjeBannerImage(slug: string): string {
+  return `/huisjes/${slug}/img/banner.jpg`;
+}

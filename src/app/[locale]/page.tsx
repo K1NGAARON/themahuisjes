@@ -2,7 +2,11 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
 import Footer from "@/components/Footer";
-import { comingSoonHuisjes, huisjes } from "@/data/huisjes";
+import {
+  comingSoonHuisjes,
+  getHuisjeBannerImage,
+  huisjes,
+} from "@/data/huisjes";
 import "@/styles/home.css";
 
 export default async function HomePage({
@@ -28,7 +32,7 @@ export default async function HomePage({
           {huisjes.map((huisje) => (
             <div key={huisje.slug} className={`item ${huisje.themeClass}`}>
               <img
-                src={`/huisjes/${huisje.slug}/img/banner.jpg`}
+                src={getHuisjeBannerImage(huisje.slug)}
                 alt={huisje.name}
               />
               <div className="content">

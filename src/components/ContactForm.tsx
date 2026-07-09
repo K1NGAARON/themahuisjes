@@ -8,7 +8,7 @@ export default function ContactForm() {
 
   return (
     <form
-      action="https://formspree.io/f/mbjneqdv"
+      action="https://formspree.io/f/mnjkklpo"
       method="post"
       target="_blank"
     >
