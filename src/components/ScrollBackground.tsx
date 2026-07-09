@@ -12,7 +12,7 @@ export default function ScrollBackground() {
     function updateBackgrounds() {
       if (window.innerWidth < DESKTOP_MIN_WIDTH) {
         sections.forEach((section) => {
-          section.style.background = "";
+          section.style.removeProperty("background");
         });
         return;
       }

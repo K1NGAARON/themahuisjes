@@ -331,16 +331,50 @@ html {
 @media (max-width: 1024px) {
     body,
     html {
-        background-attachment: scroll;
+        background-image: none;
+        background-color: var(--black-background);
     }
 
     .container .content {
         flex-direction: column;
-        min-height: auto;
+        min-height: 100vh;
         padding: 64px 24px;
         align-items: stretch;
         text-align: left;
         gap: 24px;
+        background-image: linear-gradient(
+                rgba(0, 0, 0, 0.6),
+                rgba(0, 0, 0, 0.6)
+            ),
+            var(--huisje-banner);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .container .content.pd-0 {
+        background-image: linear-gradient(
+                rgba(0, 0, 0, 0.45),
+                rgba(0, 0, 0, 0.45)
+            ),
+            var(--huisje-banner);
+    }
+
+    .container.first-container > .content:first-child {
+        padding-top: 88px;
+        background-image: linear-gradient(
+                rgba(0, 0, 0, 0.45),
+                rgba(0, 0, 0, 0.45)
+            ),
+            var(--huisje-banner);
+    }
+
+    .container.first-container > .content:first-child .item.bg {
+        background: transparent;
+    }
+
+    .container.first-container .navbar {
+        align-items: center;
     }
 
     .container .content + .content {
@@ -359,10 +393,6 @@ html {
         justify-content: flex-start;
     }
 
-    .container.first-container > .content:first-child {
-        padding-top: 88px;
-    }
-
     .container.first-container > .content:first-child > .item:first-child:not(.bg) {
         display: none;
     }
@@ -372,11 +402,6 @@ html {
         width: 100%;
         align-items: center;
         text-align: center;
-        background: rgba(0, 0, 0, 0.45);
-    }
-
-    .container.first-container .navbar {
-        align-items: center;
     }
 
     .container .content .item h1,
@@ -413,14 +438,11 @@ html {
     }
 
     .container .content {
-        min-height: 100vh;
         padding: 48px 24px;
-        background: rgba(0, 0, 0, 0.6);
     }
 
     .container .content.pd-0 {
         padding: 0;
-        background: rgba(0, 0, 0, 0.45);
     }
 
     .container .content.height-fit-content {
@@ -431,10 +453,6 @@ html {
     .container.first-container > .content:first-child {
         padding: 72px 24px 48px;
         gap: 0;
-    }
-
-    .container.first-container > .content:first-child .item.bg {
-        background: rgba(0, 0, 0, 0.45);
     }
 
     .container .content .item.align-center {
