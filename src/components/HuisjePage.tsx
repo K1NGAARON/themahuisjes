@@ -82,7 +82,7 @@ export default function HuisjePage({
                 <div className="icon">
                   <i className="fa-solid fa-car" />
                 </div>
-                <div className="item item-col">
+                <div className="item-col">
                   <p>{t("info.garage")}</p>
                   <p>{t("info.streetParking")}</p>
                   <p>{t("info.neighborhoodParking")}</p>
