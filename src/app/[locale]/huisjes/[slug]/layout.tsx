@@ -14,7 +14,7 @@ export default async function HuisjeLayout({
     <>
       <style
         dangerouslySetInnerHTML={{
-          __html: `body, html { background: url('${bannerImage}') no-repeat center center fixed; background-size: cover; }`,
+          __html: `:root { --huisje-banner: url('${bannerImage}'); }`,
         }}
       />
       {children}

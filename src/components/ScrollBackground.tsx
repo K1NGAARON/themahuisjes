@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 
-const DESKTOP_MIN_WIDTH = 769;
+const DESKTOP_MIN_WIDTH = 1025;
 
 export default function ScrollBackground() {
   useEffect(() => {
