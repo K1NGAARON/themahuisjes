@@ -1,10 +1,13 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import sharp from "sharp";
+import {
+  parseGalleriesTs,
+  updateGalleryImagePath,
+} from "./generate-galleries.mjs";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
 const PUBLIC_HUISJES = path.join(ROOT, "public", "huisjes");
-const HUIZEN_WITH_GALLERY = ["retteketet", "vis-a-vis", "maison-d-o", "ribbedepie"];
 
 const MAX_DIMENSION = 1920;
 const TARGET_MAX_BYTES = 400 * 1024;
@@ -32,13 +35,16 @@ async function fileExists(filePath) {
 
 async function collectImagePaths() {
   const imagePaths = new Set();
+  const galleriesSource = await fs.readFile(
+    path.join(ROOT, "src", "data", "galleries.ts"),
+    "utf8",
+  );
+  const galleries = parseGalleriesTs(galleriesSource);
 
-  for (const slug of HUIZEN_WITH_GALLERY) {
+  for (const [slug, images] of Object.entries(galleries)) {
     const imgDir = path.join(PUBLIC_HUISJES, slug, "img");
-    const galleryJsonPath = path.join(imgDir, "gallery.json");
-    const gallery = JSON.parse(await fs.readFile(galleryJsonPath, "utf8"));
 
-    for (const image of gallery.images ?? []) {
+    for (const image of images) {
       imagePaths.add(path.join(imgDir, normalizeImageName(image)));
     }
 
@@ -175,7 +181,7 @@ async function compressImage(imagePath) {
   if (outputPath !== imagePath) {
     await fs.writeFile(outputPath, output);
     await fs.unlink(imagePath);
-    await updateGalleryReference(imagePath, outputPath);
+    await updateGalleryImagePath(imagePath, outputPath);
   } else {
     await fs.writeFile(imagePath, output);
   }
@@ -190,28 +196,6 @@ async function compressImage(imagePath) {
     beforeDimensions: `${metadata.width}x${metadata.height}`,
     afterDimensions: `${optimizedMeta.width}x${optimizedMeta.height}`,
   };
-}
-
-async function updateGalleryReference(oldPath, newPath) {
-  const oldName = path.basename(oldPath);
-  const newName = path.basename(newPath);
-  const galleryJsonPath = path.join(path.dirname(oldPath), "gallery.json");
-
-  if (!(await fileExists(galleryJsonPath))) {
-    return;
-  }
-
-  const gallery = JSON.parse(await fs.readFile(galleryJsonPath, "utf8"));
-  const images = (gallery.images ?? []).map(normalizeImageName);
-  const index = images.indexOf(normalizeImageName(oldName));
-
-  if (index === -1) {
-    return;
-  }
-
-  images[index] = normalizeImageName(newName);
-  gallery.images = images;
-  await fs.writeFile(galleryJsonPath, `${JSON.stringify(gallery, null, 2)}\n`);
 }
 
 async function main() {

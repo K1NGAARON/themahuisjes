@@ -175,7 +175,6 @@ html {
     position: relative;
     width: 100%;
     max-width: 100%;
-    --gallery-visible: 3;
     --gallery-height: 70vh;
     --gallery-gap: 16px;
 }
@@ -195,70 +194,22 @@ html {
     gap: var(--gallery-gap);
     align-items: center;
     width: max-content;
+}
+
+.gallery-carousel__track.is-animating {
     transition: transform 0.45s ease;
 }
 
 .gallery-carousel__slide {
     flex: 0 0 auto;
     height: var(--gallery-height);
-}
-
-.gallery-carousel__frame {
-    position: relative;
-    height: 100%;
     width: auto;
 }
 
-.gallery-carousel__placeholder {
-    height: 100%;
-    width: auto;
-    aspect-ratio: 4 / 3;
-    background: rgba(255, 255, 255, 0.08);
-    animation: gallery-pulse 1.6s ease-in-out infinite;
-}
-
-.gallery-carousel__frame img {
+.gallery-carousel__slide img {
     height: 100%;
     width: auto;
     display: block;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.gallery-carousel__frame img.is-visible {
-    opacity: 1;
-}
-
-.gallery-carousel__retry {
-    height: 100%;
-    width: auto;
-    aspect-ratio: 4 / 3;
-    border: 1px dashed rgba(255, 255, 255, 0.35);
-    background: rgba(0, 0, 0, 0.25);
-    color: var(--white);
-    font: inherit;
-    cursor: pointer;
-}
-
-.gallery-carousel__retry:hover {
-    background: rgba(0, 0, 0, 0.4);
-}
-
-@keyframes gallery-pulse {
-    0%, 100% { opacity: 0.45; }
-    50% { opacity: 0.85; }
-}
-
-@media (max-width: 1024px) {
-    .gallery-carousel {
-        --gallery-visible: 2;
-    }
-}
-
-@media (max-width: 640px) {
-    .gallery-carousel {
-        --gallery-visible: 1;
-    }
 }
 
 .gallery-carousel__btn {

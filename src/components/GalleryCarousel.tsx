@@ -3,110 +3,11 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import type { HuisjeSlug } from "@/data/huisjes";
-import { getGalleryImageSrc } from "@/lib/gallery";
-import {
-  getGalleryImageCacheStatus,
-  markGalleryImageError,
-  markGalleryImageLoaded,
-  prefetchGalleryImage,
-} from "@/lib/gallery-image-cache";
+import { getGalleryImageSrc, type GalleryImage } from "@/lib/gallery";
 
 interface GalleryCarouselProps {
   slug: HuisjeSlug;
-  images: string[];
-}
-
-const MAX_RETRIES = 3;
-const RETRY_DELAYS_MS = [1000, 2000, 4000];
-const VIEWPORT_ROOT_MARGIN = "320px";
-
-function GalleryImage({
-  src,
-  alt,
-  fetchPriority,
-}: {
-  src: string;
-  alt: string;
-  fetchPriority: "high" | "low" | "auto";
-}) {
-  const t = useTranslations("huisjes.gallery");
-  const [loaded, setLoaded] = useState(
-    () => getGalleryImageCacheStatus(src) === "loaded",
-  );
-  const [failed, setFailed] = useState(false);
-  const [retryCount, setRetryCount] = useState(0);
-
-  useEffect(() => {
-    setLoaded(getGalleryImageCacheStatus(src) === "loaded");
-    setFailed(false);
-    setRetryCount(0);
-  }, [src]);
-
-  useEffect(() => {
-    if (!failed || retryCount >= MAX_RETRIES) return;
-
-    const delay = RETRY_DELAYS_MS[retryCount] ?? 4000;
-    const timer = window.setTimeout(() => {
-      setFailed(false);
-      setRetryCount((count) => count + 1);
-    }, delay);
-
-    return () => window.clearTimeout(timer);
-  }, [failed, retryCount]);
-
-  function handleRetry() {
-    setLoaded(false);
-    setFailed(false);
-    setRetryCount((count) => count + 1);
-  }
-
-  async function handleLoad(event: React.SyntheticEvent<HTMLImageElement>) {
-    const image = event.currentTarget;
-
-    try {
-      await image.decode();
-    } catch {
-      // decode() can fail on unsupported formats; onLoad still means bytes arrived.
-    }
-
-    setLoaded(true);
-    setFailed(false);
-    markGalleryImageLoaded(src);
-  }
-
-  function handleError() {
-    setFailed(true);
-    markGalleryImageError(src);
-  }
-
-  return (
-    <div className={`gallery-carousel__frame${loaded ? " is-loaded" : ""}`}>
-      {!loaded && !failed && (
-        <div className="gallery-carousel__placeholder" aria-hidden="true" />
-      )}
-      {failed && retryCount >= MAX_RETRIES ? (
-        <button
-          type="button"
-          className="gallery-carousel__retry"
-          onClick={handleRetry}
-        >
-          {t("retry")}
-        </button>
-      ) : (
-        <img
-          key={`${src}-${retryCount}`}
-          src={src}
-          alt={alt}
-          loading="eager"
-          decoding="async"
-          fetchPriority={fetchPriority}
-          className={loaded ? "is-visible" : undefined}
-          onLoad={handleLoad}
-          onError={handleError}
-        />
-      )}
-    </div>
-  );
+  images: GalleryImage[];
 }
 
 function measureCarouselLayout(
@@ -141,9 +42,8 @@ export default function GalleryCarousel({ slug, images }: GalleryCarouselProps) 
   const rootRef = useRef<HTMLDivElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
-  const [isNearViewport, setIsNearViewport] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [visibleCount, setVisibleCount] = useState(1);
+  const [isAnimating, setIsAnimating] = useState(false);
   const [layout, setLayout] = useState({
     offsets: [0],
     maxIndex: 0,
@@ -153,38 +53,6 @@ export default function GalleryCarousel({ slug, images }: GalleryCarouselProps) 
   useEffect(() => {
     setCurrentIndex(0);
   }, [slug, images]);
-
-  useEffect(() => {
-    const root = rootRef.current;
-    if (!root) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsNearViewport(true);
-          observer.disconnect();
-        }
-      },
-      { rootMargin: VIEWPORT_ROOT_MARGIN },
-    );
-
-    observer.observe(root);
-    return () => observer.disconnect();
-  }, [images.length]);
-
-  useEffect(() => {
-    function updateVisibleCount() {
-      const carousel = rootRef.current;
-      if (!carousel) return;
-      const value = getComputedStyle(carousel).getPropertyValue("--gallery-visible");
-      const parsed = parseInt(value, 10);
-      setVisibleCount(parsed > 0 ? parsed : 1);
-    }
-
-    updateVisibleCount();
-    window.addEventListener("resize", updateVisibleCount);
-    return () => window.removeEventListener("resize", updateVisibleCount);
-  }, [images.length]);
 
   useEffect(() => {
     const track = trackRef.current;
@@ -201,30 +69,10 @@ export default function GalleryCarousel({ slug, images }: GalleryCarouselProps) 
     updateLayout();
 
     const observer = new ResizeObserver(updateLayout);
-    observer.observe(track);
     observer.observe(viewport);
-    for (const slide of track.children) {
-      observer.observe(slide);
-    }
 
     return () => observer.disconnect();
-  }, [images, isNearViewport]);
-
-  useEffect(() => {
-    if (!isNearViewport) return;
-
-    const mountedStart = Math.max(0, currentIndex - 1);
-    const mountedEnd = Math.min(images.length - 1, currentIndex + visibleCount);
-    const prefetchEnd = Math.min(images.length - 1, mountedEnd + 2);
-
-    for (let index = mountedEnd + 1; index <= prefetchEnd; index++) {
-      void prefetchGalleryImage(getGalleryImageSrc(slug, images[index]));
-    }
-
-    if (mountedStart > 0) {
-      void prefetchGalleryImage(getGalleryImageSrc(slug, images[mountedStart - 1]));
-    }
-  }, [currentIndex, images, isNearViewport, slug, visibleCount]);
+  }, [images]);
 
   const maxIndex = layout.maxIndex;
   const hideNav = layout.hideNav;
@@ -233,6 +81,9 @@ export default function GalleryCarousel({ slug, images }: GalleryCarouselProps) 
   const goTo = useCallback(
     (index: number) => {
       if (!images.length) return;
+
+      setIsAnimating(true);
+
       if (index < 0) {
         setCurrentIndex(maxIndex);
       } else if (index > maxIndex) {
@@ -249,6 +100,14 @@ export default function GalleryCarousel({ slug, images }: GalleryCarouselProps) 
       setCurrentIndex(maxIndex);
     }
   }, [currentIndex, maxIndex]);
+
+  function handleTrackTransitionEnd(
+    event: React.TransitionEvent<HTMLDivElement>,
+  ) {
+    if (event.propertyName === "transform") {
+      setIsAnimating(false);
+    }
+  }
 
   if (!images.length) {
     return null;
@@ -268,32 +127,29 @@ export default function GalleryCarousel({ slug, images }: GalleryCarouselProps) 
       <div className="gallery-carousel__viewport" ref={viewportRef}>
         <div
           ref={trackRef}
-          className="gallery-carousel__track"
+          className={`gallery-carousel__track${isAnimating ? " is-animating" : ""}`}
           role="list"
           style={{ transform: `translateX(-${trackOffset}px)` }}
+          onTransitionEnd={handleTrackTransitionEnd}
         >
-          {images.map((path, index) => {
-            const isVisible =
-              index >= currentIndex && index < currentIndex + visibleCount;
-            const isAdjacent =
-              index >= currentIndex - 1 &&
-              index <= currentIndex + visibleCount;
-            const shouldLoad = isNearViewport && isAdjacent;
-
-            return (
-              <div key={path} className="gallery-carousel__slide" role="listitem">
-                {shouldLoad ? (
-                  <GalleryImage
-                    src={getGalleryImageSrc(slug, path)}
-                    alt={t("photo", { number: index + 1 })}
-                    fetchPriority={isVisible ? "high" : "low"}
-                  />
-                ) : (
-                  <div className="gallery-carousel__placeholder" aria-hidden="true" />
-                )}
-              </div>
-            );
-          })}
+          {images.map((image, index) => (
+            <div
+              key={image.path}
+              className="gallery-carousel__slide"
+              role="listitem"
+              style={{ aspectRatio: `${image.width} / ${image.height}` }}
+            >
+              <img
+                src={getGalleryImageSrc(slug, image.path)}
+                alt={t("photo", { number: index + 1 })}
+                width={image.width}
+                height={image.height}
+                loading={index <= 2 ? "eager" : "lazy"}
+                decoding="async"
+                fetchPriority={index <= 2 ? "high" : "auto"}
+              />
+            </div>
+          ))}
         </div>
       </div>
       <button

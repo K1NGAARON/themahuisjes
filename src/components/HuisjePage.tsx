@@ -1,6 +1,7 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import type { HuisjeFacts, HuisjeSlug } from "@/data/huisjes";
+import type { GalleryImage } from "@/lib/gallery";
 import GalleryCarousel from "@/components/GalleryCarousel";
 import ScrollBackground from "@/components/ScrollBackground";
 
@@ -17,7 +18,7 @@ export default function HuisjePage({
   galleryImages,
 }: {
   huisje: HuisjeFacts;
-  galleryImages: string[];
+  galleryImages: GalleryImage[];
 }) {
   const t = useTranslations("huisjes");
   const slug = huisje.slug as HuisjeSlug;

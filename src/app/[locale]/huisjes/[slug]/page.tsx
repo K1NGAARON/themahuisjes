@@ -2,8 +2,7 @@ import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import HuisjePage from "@/components/HuisjePage";
 import { getHuisje, huisjeSlugs, type HuisjeSlug } from "@/data/huisjes";
-import { getGalleryImageSrc } from "@/lib/gallery";
-import { getGalleryImages } from "@/lib/gallery-server";
+import { getGalleryImageSrc, getGalleryImages } from "@/lib/gallery";
 import "@/styles/home.css";
 import "@/styles/huisjes.css";
 
@@ -24,7 +23,7 @@ export default async function HuisjeDetailPage({
   }
 
   setRequestLocale(locale);
-  const galleryImages = await getGalleryImages(slug);
+  const galleryImages = getGalleryImages(slug as HuisjeSlug);
   const firstImage = galleryImages[0];
 
   return (
@@ -33,7 +32,7 @@ export default async function HuisjeDetailPage({
         <link
           rel="preload"
           as="image"
-          href={getGalleryImageSrc(slug as HuisjeSlug, firstImage)}
+          href={getGalleryImageSrc(slug as HuisjeSlug, firstImage.path)}
           fetchPriority="high"
         />
       ) : null}

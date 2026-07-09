@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "compress:images": "node scripts/compress-gallery-images.mjs"
+    "compress:images": "node scripts/compress-gallery-images.mjs",
+    "generate:galleries": "node scripts/generate-galleries.mjs"
   },
   "dependencies": {
     "next": "^15.3.4",
