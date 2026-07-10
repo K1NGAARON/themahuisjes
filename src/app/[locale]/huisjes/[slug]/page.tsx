@@ -3,7 +3,6 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import HuisjePage from "@/components/HuisjePage";
 import { getHuisje, huisjeSlugs, type HuisjeSlug } from "@/data/huisjes";
 import { getGalleryImageSrc, getGalleryImages } from "@/lib/gallery";
-import "@/styles/home.css";
 import "@/styles/huisjes.css";
 
 export function generateStaticParams() {

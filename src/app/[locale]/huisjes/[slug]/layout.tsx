@@ -1,3 +1,4 @@
+import BodyClass from "@/components/BodyClass";
 import { getHuisjeBannerImage } from "@/data/huisjes";
 
 export default async function HuisjeLayout({
@@ -12,6 +13,7 @@ export default async function HuisjeLayout({
 
   return (
     <>
+      <BodyClass className="page-huisje" />
       <style
         dangerouslySetInnerHTML={{
           __html: `:root { --huisje-banner: url('${bannerImage}'); }`,

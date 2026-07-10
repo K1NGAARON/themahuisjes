@@ -1,5 +1,4 @@
-body, 
-html {
+body.page-huisje {
     margin: 0;
     padding: 0;
     min-height: 100%;
@@ -337,8 +336,7 @@ html {
 }
 
 @media (max-width: 1024px) {
-    body,
-    html {
+    body.page-huisje {
         background-image: none;
         background-color: var(--black-background);
     }
@@ -532,8 +530,7 @@ html {
 }
 
 @media (max-width: 768px) {
-    body,
-    html {
+    html:has(body.page-huisje) {
         overflow-x: hidden;
     }
 

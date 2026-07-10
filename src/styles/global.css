@@ -39,7 +39,13 @@
 }
 
 html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    html:has(:target) {
+        scroll-behavior: smooth;
+    }
 }
 
 * {

@@ -3,6 +3,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing, type Locale } from "@/i18n/routing";
+import ScrollToTop from "@/components/ScrollToTop";
 import CookieBanner from "@/components/CookieBanner";
 import GoogleTagManager from "@/components/GoogleTagManager";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
@@ -70,6 +71,7 @@ export default async function LocaleLayout({
       <body>
         <GoogleTagManager />
         <NextIntlClientProvider messages={messages}>
+          <ScrollToTop />
           <SiteLogo />
           <LanguageSwitcher />
           {children}
