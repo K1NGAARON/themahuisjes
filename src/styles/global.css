@@ -31,8 +31,8 @@
     --text-2xl: clamp(1.5rem, 1.1rem + 2vw, 2.25rem);
     --text-3xl: clamp(1.625rem, 1.2rem + 2.5vw, 2.625rem);
     --text-hero: clamp(1.75rem, 1rem + 4.5vw, 3.75rem);
-    --text-display-sm: clamp(1.75rem, 0.75rem + 6vw, 5.3125rem);
-    --text-display: clamp(2.25rem, 0.5rem + 10vw, 7.5rem);
+    --text-display-sm: clamp(1.75rem, 0.75rem + 4.5vw, 3.75rem);
+    --text-display: clamp(2.25rem, 0.5rem + 7.5vw, 5rem);
     --text-subtitle: clamp(1rem, 0.75rem + 1.5vw, 1.875rem);
     --text-icon-lg: clamp(2rem, 1rem + 5vw, 4.375rem);
     --text-info-value: clamp(1.25rem, 0.75rem + 2.5vw, 2.5rem);

@@ -6,31 +6,53 @@ body.page-huisje {
     background-size: cover;
 }
 
+.container .content .item {
+    flex: 1 1 0;
+    min-width: 0;
+    container-type: inline-size;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
 .container .content .item h1 {
-    font-size: var(--text-display);
+    font-size: clamp(2rem, calc(100cqw / 7), 5rem);
     line-height: 1.05;
+    width: 100%;
     max-width: 100%;
+    box-sizing: border-box;
+    text-align: left;
 }
 
 .container .content .item h2 {
-    font-size: var(--text-display-sm);
+    font-size: clamp(1.5rem, calc(100cqw / 10), 3.25rem);
     line-height: 1.1;
+    width: 100%;
     max-width: 100%;
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+    text-align: left;
 }
 
-.container .content .item p {
-    font-size: var(--text-subtitle);
+.container .content .item.align-end h2 {
+    text-align: right;
+}
+
+.container .content .item.align-center h2 {
+    font-size: clamp(1.75rem, calc(100cqw / 12), 3.5rem);
+    text-align: center;
+}
+
+.container .content .item p,
+.container .content .item.text-list p,
+.container .content .item.text-list ol {
+    font-size: clamp(0.9375rem, calc(100cqw / 28), 1.5rem);
+    line-height: 1.5;
     text-align: justify;
 }
 
 .container .content .item.text-list {
-    text-align: justify;
-}
-
-.container .content .item.text-list p,
-.container .content .item.text-list ol {
-    font-size: var(--text-subtitle);
-    line-height: 1.5;
     text-align: justify;
 }
 
@@ -60,24 +82,17 @@ body.page-huisje {
     padding: 80px 30px;
     background: transparent;
     transition: background 0.5s;
+    overflow-x: clip;
 }
 
 .container .content + .content {
     margin-top: 15vh;
 }
 
-.container .content .item {
-    flex: 1 1 0;
-    min-width: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-}
-
 .container.first-container .item.bg {
     padding-left: 30px;
     background: rgba(0, 0, 0, 0.45);
+    text-align: left;
 }
 
 .container.first-container > .content:first-child {
@@ -96,6 +111,7 @@ body.page-huisje {
 
 .container .content .item.align-end {
     align-items: flex-end;
+    align-self: stretch;
 }
 
 .container .content .item.align-center {
@@ -409,7 +425,7 @@ body.page-huisje {
     .container .content .item p,
     .container .content .item.text-list p,
     .container .content .item.text-list ol {
-        font-size: clamp(0.9375rem, 3.4vw, 1rem);
+        font-size: clamp(0.875rem, 3.2vw, 1rem);
         line-height: 1.4;
     }
 
@@ -484,6 +500,11 @@ body.page-huisje {
     .container .content .item h2 {
         width: 100%;
         flex-shrink: 0;
+        text-align: left;
+    }
+
+    .container .content .item.align-center h2 {
+        text-align: center;
     }
 
     .container .content .item p,
