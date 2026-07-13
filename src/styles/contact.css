@@ -23,10 +23,8 @@
     padding: 0 30px;
 }
 
-.banner.contact .legal {
-    color: var(--white);
-    font-size: var(--text-xl);
-    margin-top: 20px;
+.banner.contact .row h1 {
+    text-align: left;
 }
 
 .banner.contact .contact-note {

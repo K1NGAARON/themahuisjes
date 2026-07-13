@@ -40,6 +40,7 @@ export default function HuisjePage({
               <a href="#info">{t("nav.info")}</a>
               <a href="#verhaal">{t("nav.story")}</a>
               <a href="#tips">{t("nav.tips")}</a>
+              <a href="#locatie">{t("nav.location")}</a>
               <a href="#regels">{t("nav.rules")}</a>
               <Link href="/contact">{t("nav.contact")}</Link>
             </nav>
@@ -134,6 +135,20 @@ export default function HuisjePage({
                 <li key={tip}>{tip}</li>
               ))}
             </ol>
+          </div>
+        </div>
+
+        <div className="content height-fit-content" id="locatie">
+          <div className="item text-list">
+            <p className="notranslate">
+              {t("location.address", {
+                street: huisje.addressStreet,
+                locality: huisje.addressLocality,
+              })}
+            </p>
+          </div>
+          <div className="item align-end justify-end">
+            <h2>{t("nav.location")}</h2>
           </div>
         </div>
 

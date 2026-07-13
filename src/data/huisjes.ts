@@ -4,6 +4,8 @@ export interface HuisjeFacts {
   slug: HuisjeSlug;
   name: string;
   city: string;
+  addressStreet: string;
+  addressLocality: string;
   beds: string;
   bicycle: boolean;
   garage: boolean;
@@ -25,6 +27,8 @@ export const huisjes: HuisjeFacts[] = [
     slug: "retteketet",
     name: "RettekeTet",
     city: "Nieuwpoort",
+    addressStreet: "Ankerstraat 15",
+    addressLocality: "Nieuwpoort Stad",
     beds: "5 (2 + 2 + 1)",
     bicycle: false,
     garage: false,
@@ -37,6 +41,8 @@ export const huisjes: HuisjeFacts[] = [
     slug: "vis-a-vis",
     name: "Vis à Vis",
     city: "Nieuwpoort",
+    addressStreet: "Hoogstraat 10",
+    addressLocality: "Nieuwpoort Stad",
     beds: "5 (2 + 3)",
     bicycle: true,
     garage: false,
@@ -49,6 +55,8 @@ export const huisjes: HuisjeFacts[] = [
     slug: "maison-d-o",
     name: "Maison d'O",
     city: "Nieuwpoort",
+    addressStreet: "Schipstraat 43",
+    addressLocality: "Nieuwpoort Stad",
     beds: "6 (2 + 2 + 1 + 1)",
     bicycle: false,
     garage: false,
@@ -59,8 +67,10 @@ export const huisjes: HuisjeFacts[] = [
   },
   {
     slug: "ribbedepie",
-    name: "RibbedePi",
+    name: "RibbedePie",
     city: "Hasselt",
+    addressStreet: "Nieuwe Eeuwfeeststraat 22",
+    addressLocality: "Hasselt",
     beds: "4 (2 + 2)",
     bicycle: false,
     garage: false,

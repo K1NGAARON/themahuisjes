@@ -30,8 +30,8 @@
         "description": "Ein als unbewohnbar erklärtes Haus in Nieuwpoort (134 m²), verwandelt in ein unterseeisch thematisches Interieur rund um Wasser und Licht."
       },
       "ribbedepie": {
-        "title": "RibbedePi | Themahuisjes",
-        "description": "RibbedePi in Hasselt (87 m²): eine thematische Wohnung in der Eeuwfeestwijk mit Küchenkiosk und Schreinerarbeiten von Mathijs Huyghebaert und Frits Jeuris."
+        "title": "RibbedePie | Themahuisjes",
+        "description": "RibbedePie in Hasselt (87 m²): eine thematische Wohnung in der Eeuwfeestwijk mit Küchenkiosk und Schreinerarbeiten von Mathijs Huyghebaert und Frits Jeuris."
       }
     }
   },
@@ -52,7 +52,7 @@
     "focusHeading": "Themahuisjes"
   },
   "footer": {
-    "legal": "Themahuisjes"
+    "legal": "themahuisjes von Bart Lens"
   },
   "cookies": {
     "title": "Datenschutz- und Cookie-Richtlinie",
@@ -80,6 +80,7 @@
       "info": "Info",
       "story": "Geschichte",
       "tips": "Tipps",
+      "location": "Standort",
       "rules": "Hausordnung",
       "contact": "Kontakt"
     },
@@ -93,6 +94,9 @@
     "cta": {
       "title": "Interesse an diesem Erlebnis?",
       "button": "Jetzt reservieren"
+    },
+    "location": {
+      "address": "{street}, {locality}"
     },
     "gallery": {
       "prev": "Vorheriges Foto",

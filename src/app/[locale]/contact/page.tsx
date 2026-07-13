@@ -11,7 +11,6 @@ export default async function ContactPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("contact");
-  const tc = await getTranslations("common");
 
   return (
     <div className="section banner contact">
@@ -19,7 +18,6 @@ export default async function ContactPage({
         <div className="col">
           <h1>{t("title")}</h1>
           <p className="contact-note">{t("note")}</p>
-          <p className="legal">{tc("siteName")}</p>
         </div>
         <div className="col">
           <div className="form-wrapper">
