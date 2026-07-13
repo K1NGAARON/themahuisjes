@@ -1,8 +1,8 @@
 {
   "meta": {
     "home": {
-      "title": "Welkom | Themahuisjes",
-      "description": "Ontdek unieke thematische vakantieverblijven in Nieuwpoort en Hasselt."
+      "title": "Binnenkort | Themahuisjes",
+      "description": "We werken hard aan onze vernieuwde website."
     },
     "contact": {
       "title": "Neem Contact Op | Themahuisjes",
@@ -49,7 +49,8 @@
   },
   "home": {
     "welcome": "Welkom bij",
-    "focusHeading": "Themahuisjes"
+    "focusHeading": "Themahuisjes",
+    "comingSoonMessage": "We werken hard aan onze vernieuwde website."
   },
   "footer": {
     "legal": "themahuisjes door Bart Lens"
